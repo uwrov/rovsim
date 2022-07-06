@@ -51,7 +51,7 @@ func run_thruster(thruster: Spatial, power: float):
 	var position = self.transform.basis.xform(thruster.translation)
 	var direction = thruster.get_global_transform().basis.y
 #	print(position)
-	print(direction)
+#	print(direction)
 	add_force(direction * power * 7.0, position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

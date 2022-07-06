@@ -254,6 +254,7 @@ current = true
 [node name="ViewportContainerForward" type="ViewportContainer" parent="."]
 margin_right = 640.0
 margin_bottom = 480.0
+stretch = true
 
 [node name="Viewport" type="Viewport" parent="ViewportContainerForward"]
 size = Vector2( 640, 480 )
@@ -312,22 +313,36 @@ autostart = true
 
 [node name="ThrusterUpLeft" parent="ROV" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153302, 0.0617574, -0.0285453 )
+visible = false
 
 [node name="ThrusterSidewaysTop" parent="ROV" instance=ExtResource( 22 )]
 transform = Transform( -7.54979e-08, 1, -1.50996e-07, 1, 7.54979e-08, -3.82137e-15, 7.5785e-15, -1.50996e-07, -1, 0.019349, 0.134299, 0.163569 )
+visible = false
 
 [node name="ThrusterForwardTop" parent="ROV" instance=ExtResource( 22 )]
 transform = Transform( -7.54979e-08, 1.62921e-07, 1, 1, -4.37114e-08, 7.54979e-08, 4.37114e-08, 1, -1.62921e-07, -9.09471e-05, 0.134299, -0.111305 )
+visible = false
 
 [node name="ThrusterUpRight" parent="ROV" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.153, 0.062, -0.029 )
+visible = false
 
 [node name="ThrusterForwardRight" parent="ROV" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.153, -0.053, 0.138 )
+visible = false
 
 [node name="ThrusterForwardLeft" parent="ROV" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.153, -0.053, 0.138 )
+visible = false
 
 [node name="Pool" parent="." instance=ExtResource( 21 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.965926, 0, -0.258819, 0.25, -0.258819, 0.933013, -0.0669873, -0.965926, -0.25, 0, 0, 0 )
+visible = false
+light_energy = 0.2
+shadow_enabled = true
+shadow_bias = 0.01
+directional_shadow_depth_range = 1
 
 [connection signal="timeout" from="ROV/Timer" to="ROV" method="_on_Timer_timeout"]
