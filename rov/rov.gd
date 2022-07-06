@@ -13,9 +13,11 @@ func _process(delta):
 	control_translation.z = Input.get_axis("rov_translate_backward", "rov_translate_forward")
 	control_translation.y = Input.get_axis("rov_translate_down", "rov_translate_up")
 	
-	control_torque.y = Input.get_axis("rov_yaw_right", "rov_yaw_left")
-	control_torque.x = Input.get_axis("rov_tilt_up", "rov_tilt_down")
-	control_torque.z = Input.get_axis("rov_roll_left", "rov_roll_right")
+	control_torque.y = Input.get_axis("rov_yaw_right", "rov_yaw_left") * 0.25
+	control_torque.x = Input.get_axis("rov_tilt_up", "rov_tilt_down") * 0.25
+	control_torque.z = Input.get_axis("rov_roll_left", "rov_roll_right") * 0.25
+	
+	
 
 
 
@@ -26,8 +28,31 @@ func _physics_process(delta):
 	add_force(Vector3.UP * 98 * cob_influence, cob_location)
 	add_force(Vector3.DOWN * 98, Vector3.ZERO)
 	
-	add_central_force(self.transform.basis.xform(control_translation * 10))
-	add_torque(self.transform.basis.xform(control_torque))
+#	add_central_force(self.transform.basis.xform(control_translation * 10))
+#	add_torque(self.transform.basis.xform(control_torque))
+	
+	var control_vector = [
+		control_translation.x, -control_translation.z, control_translation.y,
+		control_torque.x, -control_torque.z, control_torque.y
+	]
+	
+	var powers = mat_transform(thruster_mat, control_vector)
+	run_thruster($ThrusterForwardRight, powers[0])
+	run_thruster($ThrusterForwardLeft, powers[1])
+	run_thruster($ThrusterForwardTop, powers[2])
+	run_thruster($ThrusterSidewaysTop, powers[3])
+	run_thruster($ThrusterUpRight, powers[4])
+	run_thruster($ThrusterUpLeft, powers[5])
+	
+#	run_thruster($ThrusterSidewaysTop, 10.0)
+	
+
+func run_thruster(thruster: Spatial, power: float):
+	var position = self.transform.basis.xform(thruster.translation)
+	var direction = thruster.get_global_transform().basis.y
+#	print(position)
+	print(direction)
+	add_force(direction * power * 7.0, position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
