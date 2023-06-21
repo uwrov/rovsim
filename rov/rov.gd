@@ -17,7 +17,7 @@ func _process(delta):
 	var ty_input = Input.get_axis("rov_tilt_up", "rov_tilt_down") * 0.25
 	var tz_input = Input.get_axis("rov_roll_left", "rov_roll_right") * 0.25
 	
-	yield(get_tree().create_timer(0.25), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	
 	control_translation.x = fx_input
 	control_translation.z = fy_input
