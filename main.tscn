@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://rov/rov.gd" type="Script" id=1]
 [ext_resource path="res://rov/model/Camera lens.material" type="Material" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://rov/model/rov22visual.tscn" type="PackedScene" id=20]
 [ext_resource path="res://pool/pool.tscn" type="PackedScene" id=21]
 [ext_resource path="res://rov/thruster/thruster.tscn" type="PackedScene" id=22]
+[ext_resource path="res://pool2023/2023_MATE_Pool.tscn" type="PackedScene" id=23]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "rov22_mesh437_mesh"
@@ -262,14 +263,14 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="CameraForward" type="Camera" parent="ViewportContainerForward/Viewport"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.00782842, 0.0674113 )
+transform = Transform( -0.0640621, 0, 0.997946, 0.282764, 0.959018, 0.0181517, -0.957048, 0.283346, -0.0614367, -0.0672728, -0.356254, -3.74766 )
 fov = 80.0
 near = 0.01
 
 [node name="ViewportContainerForward2" type="ViewportContainer" parent="."]
-margin_top = 480.0
-margin_right = 640.0
-margin_bottom = 960.0
+margin_left = 640.0
+margin_right = 1285.0
+margin_bottom = 479.0
 
 [node name="Viewport" type="Viewport" parent="ViewportContainerForward2"]
 size = Vector2( 640, 480 )
@@ -277,15 +278,16 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="CameraDownward" type="Camera" parent="ViewportContainerForward2/Viewport"]
-transform = Transform( -1, 0, -8.74228e-08, -8.74228e-08, -4.37114e-08, 1, -3.82137e-15, 1, 4.37114e-08, 0, -0.0582782, 0.0521894 )
+transform = Transform( -0.064062, -0.997946, -4.92221e-08, 0.282764, -0.0181518, 0.959018, -0.957048, 0.0614366, 0.283346, -0.0520822, -0.40436, -3.76289 )
 fov = 60.0
 near = 0.01
 
 [node name="ROV" type="RigidBody" parent="."]
+transform = Transform( 0.064062, 0, -0.997946, -0.282764, 0.959018, -0.0181517, 0.957048, 0.283346, 0.0614366, 0, -0.347523, -3.74959 )
 mass = 10.0
 gravity_scale = 0.0
-linear_damp = 2.0
-angular_damp = 2.0
+linear_damp = 1.5
+angular_damp = 1.5
 script = ExtResource( 1 )
 
 [node name="ROV22Visual" parent="ROV" instance=ExtResource( 20 )]
@@ -305,7 +307,6 @@ transform = Transform( -1, 0, -8.74228e-08, -8.74228e-08, -4.37114e-08, 1, -3.82
 remote_path = NodePath("../../ViewportContainerForward2/Viewport/CameraDownward")
 
 [node name="COB" type="Spatial" parent="ROV"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0221138, 0 )
 
 [node name="Timer" type="Timer" parent="ROV"]
 wait_time = 2.0
@@ -344,5 +345,8 @@ light_energy = 0.2
 shadow_enabled = true
 shadow_bias = 0.01
 directional_shadow_depth_range = 1
+
+[node name="2023_MATE_Pool" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.385733, -2.16791, 0 )
 
 [connection signal="timeout" from="ROV/Timer" to="ROV" method="_on_Timer_timeout"]

@@ -22,7 +22,13 @@ _global_script_class_icons={
 
 config/name="Moonshot ROV"
 run/main_scene="res://main.tscn"
+run/frame_delay_msec=40
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=480
 
 [gdnative]
 
@@ -31,62 +37,62 @@ singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 [input]
 
 rov_translate_up={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":7,"axis_value":1.0,"script":null)
  ]
 }
 rov_translate_down={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":6,"axis_value":1.0,"script":null)
  ]
 }
 rov_translate_left={
-"deadzone": 0.5,
-"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+"deadzone": 0.02,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 rov_translate_right={
-"deadzone": 0.5,
-"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+"deadzone": 0.02,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 rov_translate_forward={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
  ]
 }
 rov_translate_backward={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
  ]
 }
 rov_yaw_left={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
  ]
 }
 rov_yaw_right={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
  ]
 }
 rov_tilt_up={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":1.0,"script":null)
  ]
 }
 rov_tilt_down={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":-1.0,"script":null)
  ]
 }
 rov_roll_right={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":1.0,"script":null)
  ]
 }
 rov_roll_left={
-"deadzone": 0.5,
+"deadzone": 0.02,
 "events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":-1.0,"script":null)
  ]
 }

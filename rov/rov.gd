@@ -9,13 +9,23 @@ func _ready():
 	print(mat_transform(thruster_mat, [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]))
 
 func _process(delta):
-	control_translation.x = Input.get_axis("rov_translate_right", "rov_translate_left")
-	control_translation.z = Input.get_axis("rov_translate_backward", "rov_translate_forward")
-	control_translation.y = Input.get_axis("rov_translate_down", "rov_translate_up")
+	var fx_input = Input.get_axis("rov_translate_right", "rov_translate_left")
+	var fy_input = Input.get_axis("rov_translate_backward", "rov_translate_forward")
+	var fz_input = Input.get_axis("rov_translate_down", "rov_translate_up")
 	
-	control_torque.y = Input.get_axis("rov_yaw_right", "rov_yaw_left") * 0.25
-	control_torque.x = Input.get_axis("rov_tilt_up", "rov_tilt_down") * 0.25
-	control_torque.z = Input.get_axis("rov_roll_left", "rov_roll_right") * 0.25
+	var tx_input = Input.get_axis("rov_yaw_right", "rov_yaw_left") * 0.25
+	var ty_input = Input.get_axis("rov_tilt_up", "rov_tilt_down") * 0.25
+	var tz_input = Input.get_axis("rov_roll_left", "rov_roll_right") * 0.25
+	
+	yield(get_tree().create_timer(0.25), "timeout")
+	
+	control_translation.x = fx_input
+	control_translation.z = fy_input
+	control_translation.y = fz_input
+	
+	control_torque.y = tx_input
+	control_torque.x = ty_input
+	control_torque.z = tz_input
 	
 	
 
