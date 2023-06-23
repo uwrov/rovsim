@@ -7,6 +7,7 @@ var control_torque := Vector3.ZERO
 func _ready():
 	pass # Replace with function body.
 	print(mat_transform(thruster_mat, [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]))
+	Engine.target_fps = 15
 
 func _process(delta):
 	var fx_input = Input.get_axis("rov_translate_right", "rov_translate_left")

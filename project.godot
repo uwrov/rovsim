@@ -22,7 +22,6 @@ _global_script_class_icons={
 
 config/name="Moonshot ROV"
 run/main_scene="res://main.tscn"
-run/frame_delay_msec=70
 config/icon="res://icon.png"
 
 [display]

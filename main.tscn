@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://rov/rov.gd" type="Script" id=1]
 [ext_resource path="res://rov/model/Camera lens.material" type="Material" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://rov/thruster/thruster.tscn" type="PackedScene" id=22]
 [ext_resource path="res://pool2023/2023_MATE_Pool.tscn" type="PackedScene" id=23]
 [ext_resource path="res://rov/model/rov_reduced.glb" type="PackedScene" id=24]
+[ext_resource path="res://pool2023_4m/2023_MATE_Pool_4m.tscn" type="PackedScene" id=25]
 
 [sub_resource type="Shader" id=3]
 code = "/////////////////////////////////
@@ -316,11 +317,13 @@ current = true
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 margin_top = -80.0
-margin_right = 640.0
-margin_bottom = 560.0
+margin_right = 1280.0
+margin_bottom = 1200.0
+rect_scale = Vector2( 0.5, 0.5 )
+stretch = true
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 640, 640 )
+size = Vector2( 1280, 1280 )
 handle_input_locally = false
 render_target_update_mode = 3
 
@@ -329,7 +332,7 @@ margin_right = 640.0
 margin_bottom = 480.0
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer/Viewport/ViewportContainerForward"]
-size = Vector2( 640, 640 )
+size = Vector2( 1280, 1280 )
 handle_input_locally = false
 render_target_update_mode = 3
 
@@ -428,7 +431,11 @@ shadow_enabled = true
 shadow_bias = 0.01
 directional_shadow_depth_range = 1
 
+[node name="2023_MATE_Pool_4m" parent="." instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.385733, -4.20738, 0 )
+
 [node name="2023_MATE_Pool" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.385733, -2.16791, 0 )
+visible = false
 
 [connection signal="timeout" from="ROV/Timer" to="ROV" method="_on_Timer_timeout"]
