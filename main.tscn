@@ -20,7 +20,7 @@
 [ext_resource path="res://rov/model/Mounting blocks_001.material" type="Material" id=18]
 [ext_resource path="res://rov/model/Thrusters.material" type="Material" id=19]
 [ext_resource path="res://rov/model/rov22visual.tscn" type="PackedScene" id=20]
-[ext_resource path="res://pool/pool.tscn" type="PackedScene" id=21]
+[ext_resource path="res://pool2023_new/pool2023_new.tscn" type="PackedScene" id=21]
 [ext_resource path="res://rov/thruster/thruster.tscn" type="PackedScene" id=22]
 [ext_resource path="res://pool2023/2023_MATE_Pool.tscn" type="PackedScene" id=23]
 [ext_resource path="res://rov/model/rov_reduced.glb" type="PackedScene" id=24]
@@ -421,8 +421,6 @@ visible = false
 [node name="rov_reduced" parent="ROV" instance=ExtResource( 24 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, -0.173 )
 
-[node name="Pool" parent="." instance=ExtResource( 21 )]
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.965926, 0, -0.258819, 0.25, -0.258819, 0.933013, -0.0669873, -0.965926, -0.25, 0, 0, 0 )
 visible = false
@@ -433,9 +431,13 @@ directional_shadow_depth_range = 1
 
 [node name="2023_MATE_Pool_4m" parent="." instance=ExtResource( 25 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.385733, -4.20738, 0 )
+visible = false
 
 [node name="2023_MATE_Pool" parent="." instance=ExtResource( 23 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.385733, -2.16791, 0 )
 visible = false
+
+[node name="pool2023_new" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.60679 )
 
 [connection signal="timeout" from="ROV/Timer" to="ROV" method="_on_Timer_timeout"]
