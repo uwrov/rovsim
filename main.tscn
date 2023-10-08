@@ -121,6 +121,7 @@ fov = 60.0
 near = 0.01
 
 [node name="ROV23" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.0414572, 0, -0.99914, -0.31847, 0.947841, -0.0132142, 0.947026, 0.318744, 0.0392948, -0.00488129, -0.181498, -3.6201 )
 forward_camera_location_path = NodePath("../ViewportContainer/Viewport/ViewportContainerForward/Viewport/CameraForward")
 downward_camera_location_path = NodePath("../ViewportContainerForward2/Viewport/CameraDownward")
 

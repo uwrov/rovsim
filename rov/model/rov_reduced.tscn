@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://rov/model/rov_reduced.glb" type="PackedScene" id=1]
-
-[node name="rov_reduced" instance=ExtResource( 1 )]

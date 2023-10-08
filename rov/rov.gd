@@ -63,6 +63,8 @@ func run_thruster(thruster: Spatial, power: float):
 	add_force(direction * power * 7.0, position)
 
 
+# TODO: instead of this janky setup, we should instead have actual cameras in the scene which are
+# moved/used appropriately by the parent scene
 func set_fclp(path):
 	forward_camera_location_path = path
 	$ForwardCameraLocation.remote_path = NodePath("../" + str(forward_camera_location_path))
