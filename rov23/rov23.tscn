@@ -270,10 +270,6 @@ transform = Transform( -1, 0, -8.74228e-08, -8.74228e-08, -4.37114e-08, 1, -3.82
 
 [node name="COB" type="Spatial" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
 [node name="ThrusterUpLeft" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153302, 0.0617574, -0.0285453 )
 visible = false
@@ -300,5 +296,3 @@ visible = false
 
 [node name="rov_reduced" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, -0.173 )
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
