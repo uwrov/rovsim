@@ -1,5 +1,8 @@
 extends RigidBody
 
+export(NodePath) var forward_camera_location_path setget set_fclp
+export(NodePath) var downward_camera_location_path setget set_dclp
+
 var latency = 0.0  # 0.6 is realistic
 var framerate = 0  # if nonzero, limits FPS; 10 is realistic
 
@@ -58,6 +61,15 @@ func run_thruster(thruster: Spatial, power: float):
 	var position = self.transform.basis.xform(thruster.translation)
 	var direction = thruster.get_global_transform().basis.y
 	add_force(direction * power * 7.0, position)
+
+
+func set_fclp(path):
+	forward_camera_location_path = path
+	$ForwardCameraLocation.remote_path = NodePath("../" + str(forward_camera_location_path))
+
+func set_dclp(path):
+	downward_camera_location_path = path
+	$DownwardCameraLocation.remote_path = NodePath("../" + str(downward_camera_location_path))
 
 
 const thruster_mat = [
