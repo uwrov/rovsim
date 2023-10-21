@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://rov23/rov23.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main.gd" type="Script" id=2]
 [ext_resource path="res://pool2023_new/pool2023_new.tscn" type="PackedScene" id=21]
 [ext_resource path="res://pool2023/2023_MATE_Pool.tscn" type="PackedScene" id=23]
 [ext_resource path="res://pool2023_4m/2023_MATE_Pool_4m.tscn" type="PackedScene" id=25]
@@ -67,6 +68,7 @@ shader_param/crop = 1.0
 shader_param/crop_color = Color( 0, 0, 0, 1 )
 
 [node name="Main" type="Spatial"]
+script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.691967, -0.425735, 0.583037, 0, 0.807609, 0.589718, -0.721929, -0.408065, 0.558839, 1.788, 1.7, 3.919 )
@@ -77,6 +79,7 @@ margin_top = -80.0
 margin_right = 1280.0
 margin_bottom = 1200.0
 rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 2
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
@@ -87,6 +90,7 @@ render_target_update_mode = 3
 [node name="ViewportContainerForward" type="ViewportContainer" parent="ViewportContainer/Viewport"]
 margin_right = 640.0
 margin_bottom = 480.0
+mouse_filter = 2
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer/Viewport/ViewportContainerForward"]
 size = Vector2( 1280, 1280 )
@@ -104,11 +108,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 
 [node name="ViewportContainerForward2" type="ViewportContainer" parent="."]
 margin_left = 640.0
 margin_right = 1285.0
 margin_bottom = 479.0
+mouse_filter = 2
 
 [node name="Viewport" type="Viewport" parent="ViewportContainerForward2"]
 size = Vector2( 640, 480 )
@@ -143,3 +149,29 @@ visible = false
 
 [node name="pool2023_new" parent="." instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.60679 )
+
+[node name="CommandPanelContainer" type="PanelContainer" parent="."]
+margin_right = 14.0
+margin_bottom = 14.0
+
+[node name="CommandGridContainer" type="GridContainer" parent="CommandPanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 205.0
+margin_bottom = 27.0
+columns = 2
+
+[node name="ControllerLabel" type="Label" parent="CommandPanelContainer/CommandGridContainer"]
+margin_top = 3.0
+margin_right = 67.0
+margin_bottom = 17.0
+text = "Controller:"
+
+[node name="ControllerOptionButton" type="OptionButton" parent="CommandPanelContainer/CommandGridContainer"]
+unique_name_in_owner = true
+margin_left = 71.0
+margin_right = 198.0
+margin_bottom = 20.0
+text = "Manual piloting"
+items = [ "Manual piloting", null, false, 0, null ]
+selected = 0

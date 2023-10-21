@@ -2,6 +2,9 @@ extends RigidBody
 
 export(NodePath) var forward_camera_location_path setget set_fclp
 export(NodePath) var downward_camera_location_path setget set_dclp
+export(Array, NodePath) var waypoints
+export var use_controller := false
+export(Script) var controller_script
 
 var latency = 0.0  # 0.6 is realistic
 var framerate = 0  # if nonzero, limits FPS; 10 is realistic
