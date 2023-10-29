@@ -59,9 +59,6 @@ func _get_control_output() -> Array:
 	
 	force = pos_error * POS_KP
 	
-	if force.length() > 1.0:
-		force /= force.length()
-	
 	return [force, torque]
 
 

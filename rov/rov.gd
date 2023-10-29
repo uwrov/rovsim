@@ -81,7 +81,7 @@ func mat_transform(mat, vector):
 	return result
 
 func limit_powers(powers: Array) -> Array:
-	var max_power = powers.max()
+	var max_power = max(abs(powers.max()), abs(powers.min()))
 	max_power *= 2.0
 	var norm_factor = 1.0 if max_power < 1.0 else (1 / max_power)
 	var result = []

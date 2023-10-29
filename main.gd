@@ -29,6 +29,7 @@ func _physics_process(delta):
 			waypoint_i = 0
 			for i in range(len(waypoints)):
 				waypoints[i].color_standard()
+			waypoints[waypoint_i].color_highlight()
 		else:
 			waypoints[waypoint_i].color_complete()
 			waypoint_i += 1
