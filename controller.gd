@@ -48,6 +48,12 @@ func _get_control_output() -> Array:
 	return [force, torque]
 
 
+func tick(_rov_transform: Transform, _waypoint_transform: Transform, _delta: float) -> void:
+	delta = _delta
+	set_rov_transform(_rov_transform)
+	set_waypoint_transform(_waypoint_transform)
+
+
 # updates information helper variables whenever ROV transform is updated
 func set_rov_transform(transform: Transform) -> void:
 	rov_transform = transform

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://rov23/rov23.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
+[ext_resource path="res://missions/waypoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://pool2023_new/pool2023_new.tscn" type="PackedScene" id=21]
 [ext_resource path="res://pool2023/2023_MATE_Pool.tscn" type="PackedScene" id=23]
 [ext_resource path="res://pool2023_4m/2023_MATE_Pool_4m.tscn" type="PackedScene" id=25]
@@ -70,8 +71,8 @@ shader_param/crop_color = Color( 0, 0, 0, 1 )
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.691967, -0.425735, 0.583037, 0, 0.807609, 0.589718, -0.721929, -0.408065, 0.558839, 1.788, 1.7, 3.919 )
+[node name="OverviewCamera" type="Camera" parent="."]
+transform = Transform( -0.478018, -0.63824, 0.603448, 0, 0.687024, 0.726635, -0.87835, 0.347344, -0.32841, 3.435, 2.032, -3.349 )
 current = true
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
@@ -127,7 +128,7 @@ fov = 60.0
 near = 0.01
 
 [node name="ROV23" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.0414572, 0, -0.99914, -0.31847, 0.947841, -0.0132142, 0.947026, 0.318744, 0.0392948, -0.00488129, -0.181498, -3.6201 )
+transform = Transform( 0.0414572, 0, -0.99914, -0.31847, 0.947841, -0.0132142, 0.947026, 0.318744, 0.0392948, -0.00488129, -0.209336, -3.6201 )
 forward_camera_location_path = NodePath("../ViewportContainer/Viewport/ViewportContainerForward/Viewport/CameraForward")
 downward_camera_location_path = NodePath("../ViewportContainerForward2/Viewport/CameraDownward")
 
@@ -157,7 +158,7 @@ margin_bottom = 14.0
 [node name="CommandGridContainer" type="GridContainer" parent="CommandPanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 205.0
+margin_right = 187.0
 margin_bottom = 27.0
 columns = 2
 
@@ -170,8 +171,55 @@ text = "Controller:"
 [node name="ControllerOptionButton" type="OptionButton" parent="CommandPanelContainer/CommandGridContainer"]
 unique_name_in_owner = true
 margin_left = 71.0
-margin_right = 198.0
+margin_right = 180.0
 margin_bottom = 20.0
-text = "Manual piloting"
-items = [ "Manual piloting", null, false, 0, null ]
-selected = 0
+text = "0_manual.gd"
+
+[node name="Waypoints" type="Spatial" parent="."]
+
+[node name="Overlook" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.221521, -0.575943, -3.48251 )
+
+[node name="TopLine" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -0.598464, -1.45609 )
+
+[node name="MidLine" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -2.07365, -1.45609 )
+
+[node name="BottomLine" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -2.956, -1.45609 )
+
+[node name="Fish1" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.473, -3.789, -0.575 )
+
+[node name="Fish2" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.473, -3.789, -0.575 )
+
+[node name="FishUp" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.472613, -3.24627, -0.594734 )
+
+[node name="TransectStart" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.46185, -3.42425, -3.07298 )
+
+[node name="TransectMid1" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.53692, -3.42425, -3.07298 )
+
+[node name="TransectMid2" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.488367, -3.42425, -3.07298 )
+
+[node name="TransectEnd" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.51519, -3.42425, -3.07298 )
+
+[node name="ParkStart" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08572, -3.63577, -1.68727 )
+
+[node name="ParkIn" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.086, -3.636, -0.179789 )
+
+[node name="ParkOut" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08572, -3.63577, -1.6835 )
+
+[node name="Return" parent="Waypoints" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0147112, -0.31577, -3.66817 )
+
+[connection signal="item_selected" from="CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]

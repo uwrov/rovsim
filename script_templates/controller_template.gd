@@ -1,5 +1,8 @@
 extends "res://controller.gd"
 
+### YOU MAY ADD VARIABLES HERE ###
+### you may add whatever other variables you think would be helpful ###
+
 # a method that's called whenever the waypoint is updated
 # you may want to reset/recalculate certain things in your controller
 func _waypoint_updated() -> void:
@@ -13,6 +16,6 @@ func _get_control_output() -> Array:
 	var torque := Vector3.ZERO
 	
 	### YOUR CODE GOES HERE ###
-	### modify force & torque to create your control algoithm ###
+	### modify force & torque to create your control algorithm ###
 	
 	return [force, torque]
