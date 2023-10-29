@@ -18,6 +18,7 @@ func _ready():
 		cob.add_item(filename)
 	cob.select(0)  # selects first controller in list
 	_on_ControllerOptionButton_item_selected(0)  # and runs the signal
+	waypoints[waypoint_i].color_highlight()
 
 func _physics_process(delta):
 	var rovt = $ROV23.global_transform
@@ -26,8 +27,12 @@ func _physics_process(delta):
 	if about_the_same(rovt, wayt) or not waypoints[waypoint_i].visible:
 		if waypoint_i >= len(waypoints) - 1:
 			waypoint_i = 0
+			for i in range(len(waypoints)):
+				waypoints[i].color_standard()
 		else:
+			waypoints[waypoint_i].color_complete()
 			waypoint_i += 1
+			waypoints[waypoint_i].color_highlight()
 		active_controller.set_waypoint_transform(waypoints[waypoint_i].global_transform)
 		active_controller._waypoint_updated()
 	
