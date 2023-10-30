@@ -1,8 +1,5 @@
 extends "res://controller.gd"
 
-### YOU MAY ADD VARIABLES HERE ###
-### you may add whatever other variables you think would be helpful ###
-
 # a method that's called whenever the waypoint is updated
 # you may want to reset/recalculate certain things in your controller
 func _waypoint_updated() -> void:
@@ -22,9 +19,6 @@ func _get_control_output() -> Array:
 	var tx_input = Input.get_axis("rov_yaw_right", "rov_yaw_left") * 0.25
 	var ty_input = Input.get_axis("rov_tilt_up", "rov_tilt_down") * 0.25
 	var tz_input = Input.get_axis("rov_roll_left", "rov_roll_right") * 0.25
-	
-#	if latency > 0.0:
-#		yield(get_tree().create_timer(latency), "timeout")
 	
 	force.x = fx_input
 	force.z = fy_input
