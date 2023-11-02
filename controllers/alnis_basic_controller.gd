@@ -1,3 +1,5 @@
+# Time: 1:20.00
+
 extends "res://controller.gd"
 
 const ROT_KP = 0.3
