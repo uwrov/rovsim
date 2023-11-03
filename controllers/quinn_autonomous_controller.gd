@@ -6,7 +6,7 @@
 
 extends "res://controller.gd"
 
-const ROT_KP_POINT = 0.5
+const ROT_KP_POINT = 1.0
 const ROT_KP_FINE = 0.5
 const ROT_KI = 0.1
 const ROT_KD = -0.1
@@ -15,7 +15,7 @@ const POS_KP_POINT = 3.0
 const POS_KP_FINE = 5.0
 const POS_KI = 0.0
 const POS_KD_POINT = 0.0
-const POS_KD_FINE = 0.0
+const POS_KD_FINE = -0.1
 
 const POINT_DISTANCE = 0.5
 const ROLL_DISTANCE = 0.5
@@ -50,14 +50,15 @@ func _get_control_output() -> Array:
 	# If within some distance, point toward the target instead of mimicking its rotation
 	var rot_error_world;
 	
-	# (UNIMPLEMENTED) If the target is super far away in either x or z by some certain amount, point directly to it. Otherwise, just do x and z.
+	# If the target is super far away in either x or z by some certain amount, point directly to it. Otherwise, just do x and z.
 	if (!(abs(rov_transform.origin.x - waypoint_transform.origin.x) > ROLL_DISTANCE || abs(rov_transform.origin.z - waypoint_transform.origin.z) > ROLL_DISTANCE)):
 		waypoint_transform.origin.y = rov_transform.origin.y
 		
 	if (rov_transform.origin.distance_to(waypoint_transform.origin) > POINT_DISTANCE):	
 		fine_position_flag = true;
-		# var target_transform = Transform(waypoint_rotation_quat, Vector3(waypoint_transform.origin.x, rov_transform.origin.y, waypoint_transform.origin.z))
 		var target_basis = waypoint_transform.looking_at(rov_transform.origin, Vector3(0, 1, 0))
+		if (abs(target_basis.basis.get_euler().y - waypoint_transform.basis.get_euler().y) > deg2rad(90)):
+			target_basis = target_basis.rotated(Vector3(0, 1, 0), deg2rad(180))
 		
 		rot_error_world = (
 			+ rov_basis.x.cross(target_basis.basis.x)
