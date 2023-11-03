@@ -8,16 +8,16 @@ extends "res://controller.gd"
 
 const ROT_KP_POINT = 1.0
 const ROT_KP_FINE = 0.5
-const ROT_KI = 0.1
+const ROT_KI = 0.0
 const ROT_KD = -0.1
 
-const POS_KP_POINT = 3.0
+const POS_KP_POINT = 4.0
 const POS_KP_FINE = 5.0
 const POS_KI = 0.0
-const POS_KD_POINT = 0.0
-const POS_KD_FINE = -0.1
+const POS_KD_POINT = -0.0
+const POS_KD_FINE = -0.0
 
-const POINT_DISTANCE = 0.5
+const POINT_DISTANCE = 0.7
 const ROLL_DISTANCE = 0.5
 
 # integral term of PID controllers
@@ -103,7 +103,7 @@ func _get_control_output() -> Array:
 	
 	var pos_p = pos_error
 	pos_i += pos_error * delta
-	var pos_d = (rov_transform.origin - rov_transform_previous.origin) / delta
+	var pos_d = lrot.xform_inv((rov_transform.origin - rov_transform_previous.origin) / delta)
 	if (rov_transform.origin.distance_to(waypoint_transform.origin) > POINT_DISTANCE):	
 		force = (
 			+ POS_KP_POINT * pos_p
