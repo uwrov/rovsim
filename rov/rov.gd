@@ -11,7 +11,9 @@ var framerate = 0  # if nonzero, limits FPS; 10 is realistic
 
 var control_translation := Vector3.ZERO
 var control_torque := Vector3.ZERO
-
+const TRANS_CORRECTION_STRENGTH = Vector3(10, 10, 10)
+const ROT_CORRECTION_STRENGTH = Vector3(10, 10, 10)
+const DEADBAND = 0.1
 
 func _ready():
 	print(mat_transform(thruster_mat, [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]))
@@ -32,6 +34,21 @@ func _physics_process(delta):
 		control_translation.x, -control_translation.z, control_translation.y,
 		control_torque.x, -control_torque.z, control_torque.y
 	]
+	
+
+	if get_vec_norm(control_vector) < DEADBAND:
+		var m = self.mass
+		var v = transform.basis.xform_inv(self.linear_velocity)
+		var F = m * -v * TRANS_CORRECTION_STRENGTH
+		control_vector[0] = F[0]
+		control_vector[1] = -F[2]
+		control_vector[2] = F[1]
+
+		var r_v = transform.basis.xform_inv(self.angular_velocity)
+		var T = m * -r_v * ROT_CORRECTION_STRENGTH
+		control_vector[3] = T[0]
+		control_vector[4] = -T[2]
+		control_vector[5] = T[1]
 	
 	var powers = mat_transform(thruster_mat, control_vector)
 	powers = limit_powers(powers)
@@ -69,6 +86,11 @@ const thruster_mat = [
 	[ 0.38736916,  0.0       ,  0.49966227,  0.0       , -3.37723753,  0.0       ]
 ]
 
+func get_vec_norm(vector):
+	var magnitude = 0.0
+	for value in vector:
+		magnitude += value * value
+	return sqrt(magnitude)
 
 func mat_transform(mat, vector):
 	var result := []
