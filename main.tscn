@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://rov23/rov23.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
 [ext_resource path="res://missions/waypoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pool2024_5/pool2024_5.gltf" type="PackedScene" id=4]
 [ext_resource path="res://pool2023_new/pool2023_new.tscn" type="PackedScene" id=21]
 [ext_resource path="res://pool2023/2023_MATE_Pool.tscn" type="PackedScene" id=23]
 [ext_resource path="res://pool2023_4m/2023_MATE_Pool_4m.tscn" type="PackedScene" id=25]
@@ -129,6 +130,7 @@ near = 0.01
 
 [node name="ROV23" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.0414572, 0, -0.99914, -0.31847, 0.947841, -0.0132142, 0.947026, 0.318744, 0.0392948, -0.00488129, -0.209336, -3.6201 )
+visible = false
 forward_camera_location_path = NodePath("../ViewportContainer/Viewport/ViewportContainerForward/Viewport/CameraForward")
 downward_camera_location_path = NodePath("../ViewportContainerForward2/Viewport/CameraDownward")
 
@@ -150,6 +152,7 @@ visible = false
 
 [node name="pool2023_new" parent="." instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.60679 )
+visible = false
 
 [node name="CommandPanelContainer" type="PanelContainer" parent="."]
 margin_right = 14.0
@@ -221,5 +224,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08572, -3.63577, -1.6835 )
 
 [node name="Return" parent="Waypoints" instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0147112, -0.31577, -3.66817 )
+
+[node name="POOL" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0013097, -3.3915e-05, -0.999999, 0.00272037, -0.999996, 3.74764e-05, -0.999995, -0.00272041, -0.0013096, 2, -3.79779, 0 )
 
 [connection signal="item_selected" from="CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]
