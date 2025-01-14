@@ -66,6 +66,7 @@ func load_controllers() -> Dictionary:
 	
 	return result
 
+
 func _on_ControllerOptionButton_item_selected(index):
 	var cname: String = cob.get_item_text(index)
 	print(cname)
