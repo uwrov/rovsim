@@ -49,6 +49,6 @@ visible = false
 [node name="ROV23Visual" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, -0.173 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="CollisionShROV23ape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, -0.173 )
 shape = SubResource( 2 )

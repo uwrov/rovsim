@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://rov23/rov23.tscn" type="PackedScene" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
 [ext_resource path="res://missions/waypoint.tscn" type="PackedScene" id=3]
-[ext_resource path="res://pool2024_5/pool2024_5.gltf" type="PackedScene" id=4]
-[ext_resource path="res://pool2023_new/pool2023_new.tscn" type="PackedScene" id=21]
-[ext_resource path="res://pool2023/2023_MATE_Pool.tscn" type="PackedScene" id=23]
-[ext_resource path="res://pool2023_4m/2023_MATE_Pool_4m.tscn" type="PackedScene" id=25]
+[ext_resource path="res://pool2024_5/pool2024_5.tscn" type="PackedScene" id=4]
+[ext_resource path="res://rope.tscn" type="PackedScene" id=5]
+[ext_resource path="res://rope.gd" type="Script" id=6]
+[ext_resource path="res://OverviewCamera.gd" type="Script" id=7]
+[ext_resource path="res://toggle_cam.gd" type="Script" id=8]
 
 [sub_resource type="Shader" id=3]
 code = "/////////////////////////////////
@@ -73,50 +74,18 @@ shader_param/crop_color = Color( 0, 0, 0, 1 )
 script = ExtResource( 2 )
 
 [node name="OverviewCamera" type="Camera" parent="."]
-transform = Transform( -0.478018, -0.63824, 0.603448, 0, 0.687024, 0.726635, -0.87835, 0.347344, -0.32841, 3.435, 2.032, -3.349 )
+transform = Transform( 0.93558, 0, -0.353116, 0, 1, 0, 0.353116, 0, 0.93558, -0.352, -0.292, -3.249 )
 current = true
-
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-margin_top = -80.0
-margin_right = 1280.0
-margin_bottom = 1200.0
-rect_scale = Vector2( 0.5, 0.5 )
-mouse_filter = 2
-stretch = true
-
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1280, 1280 )
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="ViewportContainerForward" type="ViewportContainer" parent="ViewportContainer/Viewport"]
-margin_right = 640.0
-margin_bottom = 480.0
-mouse_filter = 2
-
-[node name="Viewport" type="Viewport" parent="ViewportContainer/Viewport/ViewportContainerForward"]
-size = Vector2( 1280, 1280 )
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="CameraForward" type="Camera" parent="ViewportContainer/Viewport/ViewportContainerForward/Viewport"]
-transform = Transform( -0.0640621, 0, 0.997946, 0.282764, 0.959018, 0.0181517, -0.957048, 0.283346, -0.0614367, -0.0672728, -0.356254, -3.74767 )
-fov = 113.1
-near = 0.01
-
-[node name="ColorRect" type="ColorRect" parent="ViewportContainer/Viewport"]
-material = SubResource( 4 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
-mouse_filter = 2
+script = ExtResource( 7 )
+target_path = NodePath("../ROV23")
+follow_distance = 1.0
 
 [node name="ViewportContainerForward2" type="ViewportContainer" parent="."]
 margin_left = 640.0
 margin_right = 1285.0
 margin_bottom = 479.0
 mouse_filter = 2
+script = ExtResource( 8 )
 
 [node name="Viewport" type="Viewport" parent="ViewportContainerForward2"]
 size = Vector2( 640, 480 )
@@ -128,10 +97,17 @@ transform = Transform( -0.064062, -0.997946, -4.92221e-08, 0.282764, -0.0181517,
 fov = 60.0
 near = 0.01
 
+[node name="Tether" parent="." instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.106, -0.439, -3.505 )
+mass = 0.01
+script = ExtResource( 6 )
+rope_length = 100
+height = 0.0
+segment_scene = ExtResource( 5 )
+
 [node name="ROV23" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.0414572, 0, -0.99914, -0.31847, 0.947841, -0.0132142, 0.947026, 0.318744, 0.0392948, -0.00488129, -0.209336, -3.6201 )
-visible = false
-forward_camera_location_path = NodePath("../ViewportContainer/Viewport/ViewportContainerForward/Viewport/CameraForward")
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, -0.523322, -3.332 )
+forward_camera_location_path = NodePath("../ViewportContainer/Viewport/ViewportContainer/Viewport/ViewportContainerForward/Viewport/CameraForward")
 downward_camera_location_path = NodePath("../ViewportContainerForward2/Viewport/CameraDownward")
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -141,18 +117,6 @@ light_energy = 0.2
 shadow_enabled = true
 shadow_bias = 0.01
 directional_shadow_depth_range = 1
-
-[node name="2023_MATE_Pool_4m" parent="." instance=ExtResource( 25 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.385733, -4.20738, 0 )
-visible = false
-
-[node name="2023_MATE_Pool" parent="." instance=ExtResource( 23 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.385733, -2.16791, 0 )
-visible = false
-
-[node name="pool2023_new" parent="." instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.60679 )
-visible = false
 
 [node name="CommandPanelContainer" type="PanelContainer" parent="."]
 margin_right = 14.0
@@ -227,5 +191,64 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0147
 
 [node name="POOL" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 1.50996e-07, 0, -1.50996e-07, -1, 3.49066e-05, 5.27075e-12, 3.49066e-05, 1, 1.84, -3.759, -3.882 )
+
+[node name="PinJoint" type="PinJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101, -0.439, -3.505 )
+nodes/node_a = NodePath("../Tether")
+nodes/node_b = NodePath("../ROV23")
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 640.0
+margin_bottom = 480.0
+mouse_filter = 2
+stretch = true
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 640, 480 )
+handle_input_locally = false
+render_target_update_mode = 3
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="ViewportContainer/Viewport"]
+margin_top = -80.0
+margin_right = 1280.0
+margin_bottom = 1200.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 2
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer/Viewport/ViewportContainer"]
+size = Vector2( 1280, 1280 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ViewportContainerForward" type="ViewportContainer" parent="ViewportContainer/Viewport/ViewportContainer/Viewport"]
+margin_right = 640.0
+margin_bottom = 480.0
+mouse_filter = 2
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer/Viewport/ViewportContainer/Viewport/ViewportContainerForward"]
+size = Vector2( 1280, 1280 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="CameraForward" type="Camera" parent="ViewportContainer/Viewport/ViewportContainer/Viewport/ViewportContainerForward/Viewport"]
+transform = Transform( -0.0640621, 0, 0.997946, 0.282764, 0.959018, 0.0181517, -0.957048, 0.283346, -0.0614367, -0.0672728, -0.356254, -3.74767 )
+fov = 113.1
+near = 0.01
+
+[node name="ColorRect" type="ColorRect" parent="ViewportContainer/Viewport/ViewportContainer/Viewport"]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
 
 [connection signal="item_selected" from="CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]
