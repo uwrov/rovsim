@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://rov/model/Electronics.material" type="Material" id=1]
+
+[sub_resource type="CylinderMesh" id=1]
+material = ExtResource( 1 )
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.01
+radial_segments = 10
+rings = 1
+
+[sub_resource type="ConvexPolygonShape" id=2]
+margin = 0.001
+points = PoolVector3Array( -9.30391e-07, 0.005, 0.005, 0.00293807, 0.005, 0.00404464, -0.002939, 0.005, 0.00404464, -9.30391e-07, -0.005, 0.005, 0.00475528, 0.005, 0.00154464, 0.00293807, -0.005, 0.00404464, -0.00475528, 0.005, 0.00154464, -0.002939, -0.005, 0.00404464, 0.00475435, 0.005, -0.00154561, 0.00475528, -0.005, 0.00154464, -0.00475528, 0.005, -0.00154561, -0.00475528, -0.005, 0.00154464, 0.00293807, 0.005, -0.00404561, 0.00475435, -0.005, -0.00154561, -0.002939, 0.005, -0.00404561, -0.00475528, -0.005, -0.00154561, -9.30391e-07, 0.005, -0.005, 0.00293807, -0.005, -0.00404561, -0.002939, -0.005, -0.00404561, -9.30391e-07, -0.005, -0.005 )
+
+[node name="RigidBody" type="RigidBody"]
+mass = 0.1
+gravity_scale = 0.0
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
