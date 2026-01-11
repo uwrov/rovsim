@@ -1,5 +1,13 @@
 extends RigidBody
 
+@export var tether_anchor: Node3D
+@export var tether_k := 200.0
+@export var tether_damping := 15.0
+@export var tether_rest_length := 6.0
+
+var last_tether_length := 0.0
+var tether_force := Vector3.ZERO
+
 export(NodePath) var forward_camera_location_path setget set_fclp
 export(NodePath) var downward_camera_location_path setget set_dclp
 export(Array, NodePath) var waypoints
@@ -42,6 +50,20 @@ func _physics_process(delta):
 	run_thruster($ThrusterUpRight, powers[4])
 	run_thruster($ThrusterUpLeft, powers[5])
 
+	var tether_vec = global_position - tether_anchor.global_position
+	var tether_length = tether_vec.length()
+
+	if tether_length > tether_rest_length:
+		var dir = tether_vec.normalized()
+		var stretch = tether_length - tether_rest_length
+		var velocity = (tether_length - last_tether_length) / delta
+
+		tether_force = dir * (-tether_k * stretch - tether_damping * velocity)
+		apply_force(tether_force)
+	else:
+		tether_force = Vector3.ZERO
+
+	last_tether_length = tether_length
 
 func run_thruster(thruster: Spatial, power: float):
 	var position = self.transform.basis.xform(thruster.translation)
@@ -88,3 +110,6 @@ func limit_powers(powers: Array) -> Array:
 	for i in range(len(powers)):
 		result.append(powers[i] * norm_factor)
 	return result
+
+func get_load_cell_force() -> Vector3:
+	return tether_force
