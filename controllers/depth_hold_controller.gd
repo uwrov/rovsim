@@ -3,19 +3,19 @@ extends "res://controller.gd"
 class_name DepthHoldController
 
 # target depth (meters, negative is down)
-@export var target_depth := -3.0
+export var target_depth = -3.0
 
 # PID gains
-@export var kp := 40.0
-@export var kd := 10.0
-@export var ki := 0.0
+export var kp = 40.0
+export var kd = 10.0
+export var ki = 0.0
 
-var integral := 0.0
-var last_depth := 0.0
+var integral = 0.0
+var last_depth = 0.0
 
-func _get_control_output() -> Array:
-	var force := Vector3.ZERO
-	var torque := Vector3.ZERO
+func _get_control_output():
+	var force = Vector3.ZERO
+	var torque = Vector3.ZERO
 
 	# current depth from ROV position
 	var current_depth = rov_translation.y
@@ -23,7 +23,7 @@ func _get_control_output() -> Array:
 	# vertical velocity
 	var vertical_velocity = (current_depth - last_depth) / delta
 
-	# PID
+	# PID control
 	var error = target_depth - current_depth
 	integral += error * delta
 

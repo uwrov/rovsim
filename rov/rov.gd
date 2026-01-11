@@ -1,9 +1,11 @@
 extends RigidBody
 
-@export var tether_anchor: Node3D
-@export var tether_k := 200.0
-@export var tether_damping := 15.0
-@export var tether_rest_length := 6.0
+export(NodePath) var tether_anchor_path
+export var tether_k = 200.0
+export var tether_damping = 15.0
+export var tether_rest_length = 6.0
+
+var tether_anchor = null
 
 var last_tether_length := 0.0
 var tether_force := Vector3.ZERO
@@ -25,6 +27,8 @@ func _ready():
 	print(mat_transform(thruster_mat, [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]))
 	if framerate > 0:
 		Engine.target_fps = framerate
+	if tether_anchor_path:
+		tether_anchor = get_node(tether_anchor_path)
 
 func _process(delta):
 	pass
@@ -50,7 +54,7 @@ func _physics_process(delta):
 	run_thruster($ThrusterUpRight, powers[4])
 	run_thruster($ThrusterUpLeft, powers[5])
 
-	var tether_vec = global_position - tether_anchor.global_position
+	var tether_vec = global_transform.origin - tether_anchor.global_transform.origin
 	var tether_length = tether_vec.length()
 
 	if tether_length > tether_rest_length:
@@ -59,7 +63,7 @@ func _physics_process(delta):
 		var velocity = (tether_length - last_tether_length) / delta
 
 		tether_force = dir * (-tether_k * stretch - tether_damping * velocity)
-		apply_force(tether_force)
+		add_force(tether_force, Vector3.ZERO)
 	else:
 		tether_force = Vector3.ZERO
 
