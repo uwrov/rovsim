@@ -107,6 +107,7 @@ segment_scene = ExtResource( 5 )
 
 [node name="ROV23" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, -0.523322, -3.332 )
+visible = false
 forward_camera_location_path = NodePath("../ViewportContainer/Viewport/ViewportContainer/Viewport/ViewportContainerForward/Viewport/CameraForward")
 downward_camera_location_path = NodePath("../ViewportContainerForward2/Viewport/CameraDownward")
 
