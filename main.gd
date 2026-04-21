@@ -21,7 +21,7 @@ func _ready():
 	waypoints[waypoint_i].color_highlight()
 
 func _physics_process(delta):
-	var rovt = $ROV23.global_transform
+	var rovt = $ConduitSimplified.global_transform
 	var wayt = waypoints[waypoint_i].global_transform
 	
 	if about_the_same(rovt, wayt) or not waypoints[waypoint_i].visible:
@@ -39,8 +39,8 @@ func _physics_process(delta):
 	
 	active_controller.tick(rovt, wayt, delta)
 	var ctrl := active_controller._get_control_output()
-	$ROV23.control_translation = ctrl[0]
-	$ROV23.control_torque = ctrl[1]
+	$ConduitSimplified.control_translation = ctrl[0]
+	$ConduitSimplified.control_torque = ctrl[1]
 #	print(ctrl)
 
 func about_the_same(a: Transform, b: Transform, pos_delta=0.01, rot_delta = 0.1) -> bool:
