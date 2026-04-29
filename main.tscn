@@ -2,7 +2,7 @@
 
 [ext_resource path="res://main.gd" type="Script" id=2]
 [ext_resource path="res://missions/waypoint.tscn" type="PackedScene" id=3]
-[ext_resource path="res://pool2024_5/pool2024_5.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pool25-26/pool25-26.tscn" type="PackedScene" id=4]
 [ext_resource path="res://rope.tscn" type="PackedScene" id=5]
 [ext_resource path="res://rope.gd" type="Script" id=6]
 [ext_resource path="res://OverviewCamera.gd" type="Script" id=7]
@@ -24,7 +24,7 @@ uniform float aspect = 1.0;
 uniform float distortion = 1.0;
 uniform float radius = 1.0;
 uniform float alpha = 1.0;
-uniform float crop = 1.0;
+uniform float crop = 1.0;F
 uniform vec4 crop_color : hint_color = vec4(0,0,0,1);
 
 vec2 distort(vec2 p)
