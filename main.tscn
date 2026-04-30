@@ -251,4 +251,23 @@ margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
 
-[connection signal="item_selected" from="CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]
+[node name="Control" type="Control" parent="."]
+margin_left = 412.0
+margin_top = 2.0
+margin_right = 454.0
+margin_bottom = 42.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 50.0
+rect_scale = Vector2( 2, 2 )
+text = "Score: 0"
+align = 1
