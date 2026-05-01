@@ -50,7 +50,7 @@ func _physics_process(delta):
 	$ROV23.control_torque = ctrl[1]
 #	print(ctrl)
 
-func about_the_same(a: Transform, b: Transform, pos_delta=0.01, rot_delta = 0.5) -> bool:
+func about_the_same(a: Transform, b: Transform, pos_delta=0.5, rot_delta = 0.5) -> bool:
 	var position_ok = (a.origin - b.origin).length() < pos_delta
 	var rotation_ok = (
 		+ a.basis.x.angle_to(b.basis.x)
