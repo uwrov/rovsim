@@ -125,3 +125,4 @@ func limit_powers(powers: Array) -> Array:
 	for i in range(len(powers)):
 		result.append(powers[i] * norm_factor)
 	return result
+

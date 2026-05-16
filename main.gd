@@ -9,6 +9,10 @@ var active_controller: Controller
 onready var waypoints = $Waypoints.get_children()
 var waypoint_i = 0
 
+#CamSwitch variable
+onready var cam1 = $ConduitSimplified/CameraMount1/Camera1
+onready var cam2 = $ConduitSimplified/CameraMount2/Camera2
+
 func _ready():
 	print(CONTROLLERS)
 #	active_controller = CONTROLLERS["0_manual.gd"].new()
@@ -19,6 +23,9 @@ func _ready():
 	cob.select(0)  # selects first controller in list
 	_on_ControllerOptionButton_item_selected(0)  # and runs the signal
 	waypoints[waypoint_i].color_highlight()
+	
+	# Cam initialize, feel free to change
+	cam1.make_current()
 
 func _physics_process(delta):
 	var rovt = $ConduitSimplified.global_transform
@@ -71,3 +78,11 @@ func _on_ControllerOptionButton_item_selected(index):
 	var cname: String = cob.get_item_text(index)
 	print(cname)
 	active_controller = CONTROLLERS[cname].new()
+
+# More camswitch
+func _process(delta):
+	if Input.is_action_just_pressed("camSwitch"):
+		if (cam1.current):
+			cam2.make_current()
+		else:
+			cam1.make_current()

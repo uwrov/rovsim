@@ -244,6 +244,18 @@ margin_bottom = 40.0
 mouse_filter = 2
 
 [node name="ConduitSimplified" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01912, -0.509203, -3.34795 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016917, -0.516496, -3.39143 )
+
+[node name="CameraMount1" type="Spatial" parent="ConduitSimplified"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.383069, 0, 0 )
+
+[node name="Camera1" type="Camera" parent="ConduitSimplified/CameraMount1"]
+transform = Transform( -0.999492, 0, 0.0318643, 0, 1, 0, -0.0318643, 0, -0.999492, -0.383872, -0.00311995, 0.232188 )
+
+[node name="CameraMount2" type="Spatial" parent="ConduitSimplified"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428285, 0, 0 )
+
+[node name="Camera2" type="Camera" parent="ConduitSimplified/CameraMount2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438181, 0.259642, -0.105552 )
 
 [connection signal="item_selected" from="CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]
