@@ -12,6 +12,7 @@ var framerate = 0  # if nonzero, limits FPS; 10 is realistic
 var control_translation := Vector3.ZERO
 var control_torque := Vector3.ZERO
 
+var wall_normal_y_threshold := 0.6 
 
 func _ready():
 	print(mat_transform(thruster_mat, [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]))
@@ -79,6 +80,31 @@ func mat_transform(mat, vector):
 			sum += mat[i][j] * vector[j]
 		result[i] = sum
 	return result
+
+
+func _integrate_forces(state):
+	# Use direct body state contacts to detect collisions and bounce off mostly-vertical
+	if state.get_contact_count() == 0:
+		return
+	for i in range(state.get_contact_count()):
+		var normal = state.get_contact_local_normal(i)
+		if normal == null:
+			continue
+		normal = normal.normalized()
+		# If the contact normal is mostly horizontal (y small), it's likely a wall
+		if abs(normal.y) < wall_normal_y_threshold:
+			var v = state.linear_velocity
+
+			# Reflect velocity across the contact normal and scale by bounce_energy
+			var reflected = v.bounce(normal) 
+			state.linear_velocity = reflected
+			# Slightly damp angular velocity on bounce to avoid wild spins
+			state.angular_velocity = state.angular_velocity * 0.8
+			# small nudge outward to reduce chance of sticking
+			var trans = state.get_transform()
+			trans.origin += normal * 0.01
+			state.set_transform(trans)
+
 
 func limit_powers(powers: Array) -> Array:
 	var max_power = max(abs(powers.max()), abs(powers.min()))
