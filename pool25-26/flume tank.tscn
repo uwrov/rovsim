@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://flume tank.gltf" type="PackedScene" id=1]
+
+[node name="flume tank" instance=ExtResource( 1 )]
+
+[node name="Pool" parent="." index="0"]
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 3.2, 0, 3 )
+
+[node name="StaticBody" type="StaticBody" parent="Pool/occurrence of Walls/Walls" index="0"]
+
+[node name="StaticBody" type="StaticBody" parent="Pool/occurrence of Walls" index="1"]
+
+[node name="12_in_PVC_Pipe72" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe72" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe73" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe73" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, -2.98023e-08 )
+
+[node name="12_inch_PVC_L3" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L3" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, -1.78814e-07 )
+
+[node name="12_inch_PVC_L4" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L4" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_inch_PVC_L5" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L5" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_inch_PVC_L6" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L6" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, -2.98023e-08 )
+
+[node name="12_inch_PVC_L7" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L7" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_inch_PVC_T41" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_T41" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, -1.78814e-07 )
+
+[node name="12_in_PVC_Pipe74" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe74" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe75" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe75" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 1.78814e-07 )
+
+[node name="12_in_PVC_Pipe76" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe76" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, -4.23516e-22, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_in_PVC_Pipe77" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe77" index="0"]
+transform = Transform( 1, 0, 0, 4.23516e-22, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_inch_PVC_T42" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_T42" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe78" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe78" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe79" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe79" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_inch_PVC_T43" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_T43" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe80" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe80" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe81" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe81" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78814e-07, -0.509334, 0 )
+
+[node name="12_inch_PVC_T44" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_T44" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_in_PVC_Pipe82" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe82" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_inch_PVC_L8" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L8" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 4.23516e-22, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_in_PVC_Pipe83" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe83" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78814e-07, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe84" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe84" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_inch_PVC_L9" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L9" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0.509334, 0 )
+
+[node name="12_inch_PVC_L10" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L10" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 4.23516e-22, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe85" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe85" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, -0.509334, 0 )
