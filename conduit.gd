@@ -12,7 +12,7 @@ var framerate = 0  # if nonzero, limits FPS; 10 is realistic
 var control_translation := Vector3.ZERO
 var control_torque := Vector3.ZERO
 
-var wall_normal_y_threshold := 0.6 
+var wall_normal_y_threshold := 0.4 
 
 # Logically derived matrix based on thruster orientations and positions.
 # Target axes (columns): 0:Right, 1:Up, 2:Backward, 3:Pitch(Zeroed), 4:YawLeft, 5:RollLeft
@@ -44,10 +44,10 @@ func _ready():
 	if framerate > 0:
 		Engine.target_fps = framerate
 
-func _process(delta):
+func _process(_delta):
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var cob_location = $COB.get_global_transform().origin - get_global_transform().origin
 	var cob_influence = clamp((-0.04 - get_global_transform().origin.y) * 5.0, 0.0, 1.0)
 	
