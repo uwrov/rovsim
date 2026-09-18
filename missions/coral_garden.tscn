@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://missions/coral_garden.glb" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.015, 0.013, 0.98 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.015, 0.013, 0.47 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.015, 0.013, 0.28 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.015, 0.013, 0.27 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.18, 0.013, 0.015 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.013, 0.3, 0.015 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.013, 0.152, 0.015 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 0.013, 0.102, 0.015 )
+
+[node name="coral_garden" instance=ExtResource( 1 )]
+
+[node name="StaticBody" type="StaticBody" parent="." index="1"]
+
+[node name="ZLongLowerRail1" type="CollisionShape" parent="StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, -0.03, -0.275 )
+shape = SubResource( 1 )
+
+[node name="ZLongLowerRail2" type="CollisionShape" parent="StaticBody" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, -0.03, -0.275 )
+shape = SubResource( 1 )
+
+[node name="ZMiddleRail1" type="CollisionShape" parent="StaticBody" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.245, -0.78 )
+shape = SubResource( 2 )
+
+[node name="ZMiddleRail2" type="CollisionShape" parent="StaticBody" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278, 0.245, -0.78 )
+shape = SubResource( 2 )
+
+[node name="ZUpperRail1" type="CollisionShape" parent="StaticBody" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278, 0.562, -0.07 )
+shape = SubResource( 3 )
+
+[node name="ZUpperRail2" type="CollisionShape" parent="StaticBody" index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047, 0.562, -0.07 )
+shape = SubResource( 3 )
+
+[node name="ZLowerMiddleRail1" type="CollisionShape" parent="StaticBody" index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047, 0.146, 0.44 )
+shape = SubResource( 4 )
+
+[node name="ZLowerMiddleRail2" type="CollisionShape" parent="StaticBody" index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278, 0.146, 0.44 )
+shape = SubResource( 4 )
+
+[node name="XUpperRail" type="CollisionShape" parent="StaticBody" index="8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115, 0.562, -0.07 )
+shape = SubResource( 5 )
+
+[node name="XMiddleRail" type="CollisionShape" parent="StaticBody" index="9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115, 0.245, -1.137 )
+shape = SubResource( 5 )
+
+[node name="XLowerMiddleRail" type="CollisionShape" parent="StaticBody" index="10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115, 0.146, 0.593 )
+shape = SubResource( 5 )
+
+[node name="XLowerRail" type="CollisionShape" parent="StaticBody" index="11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115, -0.03, 0.593 )
+shape = SubResource( 5 )
+
+[node name="XLowerRail2" type="CollisionShape" parent="StaticBody" index="12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115, -0.03, -1.137 )
+shape = SubResource( 5 )
+
+[node name="YLongRail1" type="CollisionShape" parent="StaticBody" index="13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.27, 0.166 )
+shape = SubResource( 6 )
+
+[node name="YLongRail2" type="CollisionShape" parent="StaticBody" index="14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.27, 0.166 )
+shape = SubResource( 6 )
+
+[node name="YLongRail3" type="CollisionShape" parent="StaticBody" index="15"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.27, -0.31 )
+shape = SubResource( 6 )
+
+[node name="YLongRail4" type="CollisionShape" parent="StaticBody" index="16"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.27, -0.31 )
+shape = SubResource( 6 )
+
+[node name="YMediumRail1" type="CollisionShape" parent="StaticBody" index="17"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.107, -1.213 )
+shape = SubResource( 7 )
+
+[node name="YMediumRail2" type="CollisionShape" parent="StaticBody" index="18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049, 0.107, -1.213 )
+shape = SubResource( 7 )
+
+[node name="YShortRail1" type="CollisionShape" parent="StaticBody" index="19"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.049, 0.058, 0.668 )
+shape = SubResource( 8 )
+
+[node name="YShortRail2" type="CollisionShape" parent="StaticBody" index="20"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 0.058, 0.668 )
+shape = SubResource( 8 )
