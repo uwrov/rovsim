@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://CameraView2.gd" type="Script" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
@@ -11,12 +11,6 @@
 [ext_resource path="res://conduit.tscn" type="PackedScene" id=9]
 [ext_resource path="res://pool_manager.gd" type="Script" id=10]
 [ext_resource path="res://CameraView1.gd" type="Script" id=11]
-[ext_resource path="res://missions/coral_sample.tscn" type="PackedScene" id=12]
-[ext_resource path="res://missions/transect_area.tscn" type="PackedScene" id=13]
-[ext_resource path="res://missions/basket_star.tscn" type="PackedScene" id=14]
-[ext_resource path="res://missions/coral_garden.tscn" type="PackedScene" id=15]
-[ext_resource path="res://missions/crab_area.tscn" type="PackedScene" id=16]
-[ext_resource path="res://missions/iceberg.tscn" type="PackedScene" id=17]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
@@ -118,34 +112,8 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0147
 [node name="POOL" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 1.84, -3.759, -3.882 )
 
-[node name="Iceberg <2>" parent="POOL/Pool" index="0"]
-visible = false
-
-[node name="Basket Star <1>" parent="POOL/Pool" index="1"]
-transform = Transform( 1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0 )
-visible = false
-
-[node name="Coral Sample <3>" parent="POOL/Pool" index="2"]
-transform = Transform( 1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0 )
-visible = false
-
-[node name="Crab Area <1>" parent="POOL/Pool" index="3"]
-visible = false
-
-[node name="Coral Sample <1>" parent="POOL/Pool" index="4"]
-visible = false
-
-[node name="Basket Star <2>" parent="POOL/Pool" index="5"]
-visible = false
-
-[node name="Coral Garden Final <1>" parent="POOL/Pool" index="6"]
-visible = false
-
 [node name="Walls" parent="POOL/Pool/occurrence of Walls" index="0"]
 transform = Transform( 1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0 )
-
-[node name="Transect Area <1>" parent="POOL/Pool" index="8"]
-visible = false
 
 [node name="PinJoint" type="PinJoint" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101, -0.439, -3.505 )
@@ -190,6 +158,7 @@ __meta__ = {
 }
 
 [node name="Camera" type="Camera" parent="ViewportContainer/Viewport"]
+current = true
 script = ExtResource( 11 )
 
 [node name="ViewportContainerForward2" type="ViewportContainer" parent="."]
@@ -205,31 +174,8 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Camera" type="Camera" parent="ViewportContainerForward2/Viewport"]
+current = true
 script = ExtResource( 1 )
-
-[node name="CoralSample1" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0288677, -3.68863, -4.39904 )
-
-[node name="CoralSample3" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00185, -3.68805, -4.52986 )
-
-[node name="TransectArea" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86961, -4.27612, -1.21215 )
-
-[node name="BasketStar1" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.874168, -3.71456, -4.50159 )
-
-[node name="BasketStar2" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49014, -3.7169, -4.41114 )
-
-[node name="coral_garden" parent="." instance=ExtResource( 15 )]
-transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 1.255, -3.664, -4.983 )
-
-[node name="crab_area" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.709, -3.58, -4.464 )
-
-[node name="iceberg" parent="." instance=ExtResource( 17 )]
-transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.943, -1.22, -2.505 )
 
 [connection signal="item_selected" from="CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]
 

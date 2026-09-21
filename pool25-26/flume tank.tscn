@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://flume tank.gltf" type="PackedScene" id=1]
+[ext_resource path="res://missions/coral_sample.tscn" type="PackedScene" id=2]
+[ext_resource path="res://missions/coral_garden.tscn" type="PackedScene" id=3]
+[ext_resource path="res://missions/basket_star.tscn" type="PackedScene" id=4]
+[ext_resource path="res://missions/crab_area.tscn" type="PackedScene" id=5]
+[ext_resource path="res://missions/iceberg.tscn" type="PackedScene" id=6]
+[ext_resource path="res://missions/transect_area.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConcavePolygonShape" id=1]
 data = PoolVector3Array( 6.096, 0.0254, 0, 0.0254, 4.3045, 0, 6.096, 4.3045, 0, 0.0254, 4.3045, 0, 6.096, 0.0254, 0, 0.0254, 0.0254, 0, 0.0254, 0.0254, 3.6576, 0.0254, 4.3045, 0, 0.0254, 0.0254, 0, 0.0254, 4.3045, 0, 0.0254, 0.0254, 3.6576, 0.0254, 4.3045, 3.6576, 6.096, 0.0254, 3.6576, 0.0254, 0.0254, 0, 6.096, 0.0254, 0, 0.0254, 0.0254, 0, 6.096, 0.0254, 3.6576, 0.0254, 0.0254, 3.6576, 6.096, 0, 3.6576, 6.096, 0.0254, 0, 6.096, 0, -0.0254, 6.096, 4.3045, -0.0254, 6.096, 0.0254, 0, 6.096, 4.3045, 0, 6.096, 0.0254, 0, 6.096, 4.3045, -0.0254, 6.096, 0, -0.0254, 6.096, 0.0254, 0, 6.096, 0, 3.6576, 6.096, 0.0254, 3.6576, 6.096, 4.3045, -0.0254, 0.0254, 4.3045, 0, 0, 4.3045, -0.0254, 0, 4.3045, 3.6576, 0.0254, 4.3045, 0, 0.0254, 4.3045, 3.6576, 0.0254, 4.3045, 0, 0, 4.3045, 3.6576, 0, 4.3045, -0.0254, 0.0254, 4.3045, 0, 6.096, 4.3045, -0.0254, 6.096, 4.3045, 0, 0, 4.3045, 3.6576, 0.0254, 0.0254, 3.6576, 0, 0, 3.6576, 6.096, 0, 3.6576, 0.0254, 0.0254, 3.6576, 6.096, 0.0254, 3.6576, 0.0254, 0.0254, 3.6576, 6.096, 0, 3.6576, 0, 0, 3.6576, 0.0254, 0.0254, 3.6576, 0, 4.3045, 3.6576, 0.0254, 4.3045, 3.6576, 0, 4.3045, -0.0254, 0, 0, 3.6576, 0, 0, -0.0254, 0, 0, 3.6576, 0, 4.3045, -0.0254, 0, 4.3045, 3.6576, 0, 0, -0.0254, 6.096, 0, 3.6576, 6.096, 0, -0.0254, 6.096, 0, 3.6576, 0, 0, -0.0254, 0, 0, 3.6576, 0, 4.3045, -0.0254, 6.096, 0, -0.0254, 6.096, 4.3045, -0.0254, 6.096, 0, -0.0254, 0, 4.3045, -0.0254, 0, 0, -0.0254 )
@@ -10,6 +16,29 @@ data = PoolVector3Array( 6.096, 0.0254, 0, 0.0254, 4.3045, 0, 6.096, 4.3045, 0, 
 [node name="Pool" parent="." index="0"]
 transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 3.2, 0, 3 )
 
+[node name="Iceberg <2>" parent="Pool" index="0"]
+visible = false
+
+[node name="Basket Star <1>" parent="Pool" index="1"]
+transform = Transform( 1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0 )
+visible = false
+
+[node name="Coral Sample <3>" parent="Pool" index="2"]
+transform = Transform( 1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0 )
+visible = false
+
+[node name="Crab Area <1>" parent="Pool" index="3"]
+visible = false
+
+[node name="Coral Sample <1>" parent="Pool" index="4"]
+visible = false
+
+[node name="Basket Star <2>" parent="Pool" index="5"]
+visible = false
+
+[node name="Coral Garden Final <1>" parent="Pool" index="6"]
+visible = false
+
 [node name="StaticBody" type="StaticBody" parent="Pool/occurrence of Walls/Walls" index="0"]
 
 [node name="StaticBody2" type="StaticBody" parent="Pool/occurrence of Walls/Walls" index="1"]
@@ -18,6 +47,9 @@ transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.742
 shape = SubResource( 1 )
 
 [node name="StaticBody" type="StaticBody" parent="Pool/occurrence of Walls" index="1"]
+
+[node name="Transect Area <1>" parent="Pool" index="8"]
+visible = false
 
 [node name="12_in_PVC_Pipe72" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe72" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
@@ -96,3 +128,27 @@ transform = Transform( 1, 0, 0, 0, 1, 4.23516e-22, 0, 0, 1, 0, -0.509334, 0 )
 
 [node name="12_in_PVC_Pipe85" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe85" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, -0.509334, 0 )
+
+[node name="CoralSample1" parent="." index="1" instance=ExtResource( 2 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 1.81113, -0.0703702, -0.51704 )
+
+[node name="CoralSample3" parent="." index="2" instance=ExtResource( 2 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.16185, -0.07095, -0.64786 )
+
+[node name="TransectArea" parent="." index="3" instance=ExtResource( 7 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 3.70961, 0.51712, 2.66985 )
+
+[node name="BasketStar1" parent="." index="4" instance=ExtResource( 4 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.965832, -0.0444401, -0.61959 )
+
+[node name="BasketStar2" parent="." index="5" instance=ExtResource( 4 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.65014, -0.0420999, -0.52914 )
+
+[node name="coral_garden" parent="." index="6" instance=ExtResource( 3 )]
+transform = Transform( -1.19249e-08, 0, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, 1.19249e-08, 0.585, -0.0950001, -1.101 )
+
+[node name="crab_area" parent="." index="7" instance=ExtResource( 5 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 2.549, -0.179, -0.582 )
+
+[node name="iceberg" parent="." index="8" instance=ExtResource( 6 )]
+transform = Transform( -0.707107, 6.18173e-08, -0.707107, -8.74228e-08, -1, 0, -0.707107, 6.18173e-08, 0.707107, -1.103, -2.539, 1.377 )
