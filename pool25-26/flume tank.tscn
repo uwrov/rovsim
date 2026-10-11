@@ -1,0 +1,154 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://flume tank.gltf" type="PackedScene" id=1]
+[ext_resource path="res://missions/coral_sample.tscn" type="PackedScene" id=2]
+[ext_resource path="res://missions/coral_garden.tscn" type="PackedScene" id=3]
+[ext_resource path="res://missions/basket_star.tscn" type="PackedScene" id=4]
+[ext_resource path="res://missions/crab_area.tscn" type="PackedScene" id=5]
+[ext_resource path="res://missions/iceberg.tscn" type="PackedScene" id=6]
+[ext_resource path="res://missions/transect_area.tscn" type="PackedScene" id=7]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( 6.096, 0.0254, 0, 0.0254, 4.3045, 0, 6.096, 4.3045, 0, 0.0254, 4.3045, 0, 6.096, 0.0254, 0, 0.0254, 0.0254, 0, 0.0254, 0.0254, 3.6576, 0.0254, 4.3045, 0, 0.0254, 0.0254, 0, 0.0254, 4.3045, 0, 0.0254, 0.0254, 3.6576, 0.0254, 4.3045, 3.6576, 6.096, 0.0254, 3.6576, 0.0254, 0.0254, 0, 6.096, 0.0254, 0, 0.0254, 0.0254, 0, 6.096, 0.0254, 3.6576, 0.0254, 0.0254, 3.6576, 6.096, 0, 3.6576, 6.096, 0.0254, 0, 6.096, 0, -0.0254, 6.096, 4.3045, -0.0254, 6.096, 0.0254, 0, 6.096, 4.3045, 0, 6.096, 0.0254, 0, 6.096, 4.3045, -0.0254, 6.096, 0, -0.0254, 6.096, 0.0254, 0, 6.096, 0, 3.6576, 6.096, 0.0254, 3.6576, 6.096, 4.3045, -0.0254, 0.0254, 4.3045, 0, 0, 4.3045, -0.0254, 0, 4.3045, 3.6576, 0.0254, 4.3045, 0, 0.0254, 4.3045, 3.6576, 0.0254, 4.3045, 0, 0, 4.3045, 3.6576, 0, 4.3045, -0.0254, 0.0254, 4.3045, 0, 6.096, 4.3045, -0.0254, 6.096, 4.3045, 0, 0, 4.3045, 3.6576, 0.0254, 0.0254, 3.6576, 0, 0, 3.6576, 6.096, 0, 3.6576, 0.0254, 0.0254, 3.6576, 6.096, 0.0254, 3.6576, 0.0254, 0.0254, 3.6576, 6.096, 0, 3.6576, 0, 0, 3.6576, 0.0254, 0.0254, 3.6576, 0, 4.3045, 3.6576, 0.0254, 4.3045, 3.6576, 0, 4.3045, -0.0254, 0, 0, 3.6576, 0, 0, -0.0254, 0, 0, 3.6576, 0, 4.3045, -0.0254, 0, 4.3045, 3.6576, 0, 0, -0.0254, 6.096, 0, 3.6576, 6.096, 0, -0.0254, 6.096, 0, 3.6576, 0, 0, -0.0254, 0, 0, 3.6576, 0, 4.3045, -0.0254, 6.096, 0, -0.0254, 6.096, 4.3045, -0.0254, 6.096, 0, -0.0254, 0, 4.3045, -0.0254, 0, 0, -0.0254 )
+
+[node name="flume tank" instance=ExtResource( 1 )]
+
+[node name="Pool" parent="." index="0"]
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 3.2, 0, 3 )
+
+[node name="Iceberg <2>" parent="Pool" index="0"]
+visible = false
+
+[node name="Basket Star <1>" parent="Pool" index="1"]
+transform = Transform( 1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0 )
+visible = false
+
+[node name="Coral Sample <3>" parent="Pool" index="2"]
+transform = Transform( 1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0 )
+visible = false
+
+[node name="Crab Area <1>" parent="Pool" index="3"]
+visible = false
+
+[node name="Coral Sample <1>" parent="Pool" index="4"]
+visible = false
+
+[node name="Basket Star <2>" parent="Pool" index="5"]
+visible = false
+
+[node name="Coral Garden Final <1>" parent="Pool" index="6"]
+visible = false
+
+[node name="StaticBody" type="StaticBody" parent="Pool/occurrence of Walls/Walls" index="0"]
+
+[node name="StaticBody2" type="StaticBody" parent="Pool/occurrence of Walls/Walls" index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Pool/occurrence of Walls/Walls/StaticBody2" index="0"]
+shape = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Pool/occurrence of Walls" index="1"]
+
+[node name="Transect Area <1>" parent="Pool" index="8"]
+visible = false
+
+[node name="12_in_PVC_Pipe72" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe72" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe73" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe73" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, -2.98023e-08 )
+
+[node name="12_inch_PVC_L3" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L3" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, -1.78814e-07 )
+
+[node name="12_inch_PVC_L4" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L4" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_inch_PVC_L5" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L5" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_inch_PVC_L6" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L6" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, -2.98023e-08 )
+
+[node name="12_inch_PVC_L7" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L7" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_inch_PVC_T41" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_T41" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, -1.78814e-07 )
+
+[node name="12_in_PVC_Pipe74" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe74" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe75" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe75" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 1.78814e-07 )
+
+[node name="12_in_PVC_Pipe76" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe76" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, -4.23516e-22, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_in_PVC_Pipe77" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe77" index="0"]
+transform = Transform( 1, 0, 0, 4.23516e-22, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_inch_PVC_T42" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_T42" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe78" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe78" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe79" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe79" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_inch_PVC_T43" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_T43" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe80" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe80" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe81" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe81" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78814e-07, -0.509334, 0 )
+
+[node name="12_inch_PVC_T44" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_T44" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_in_PVC_Pipe82" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe82" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_inch_PVC_L8" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L8" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 4.23516e-22, 0, 0, 1, 0, 0.509334, 0 )
+
+[node name="12_in_PVC_Pipe83" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe83" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78814e-07, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe84" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe84" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_inch_PVC_L9" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L9" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0.509334, 0 )
+
+[node name="12_inch_PVC_L10" parent="Pool/Transect Area <1>/occurrence of 12_inch_PVC_L10" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 4.23516e-22, 0, 0, 1, 0, -0.509334, 0 )
+
+[node name="12_in_PVC_Pipe85" parent="Pool/Transect Area <1>/occurrence of 12_in_PVC_Pipe85" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, -0.509334, 0 )
+
+[node name="CoralSample1" parent="." index="1" instance=ExtResource( 2 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 1.81113, -0.0703702, -0.51704 )
+
+[node name="CoralSample3" parent="." index="2" instance=ExtResource( 2 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.16185, -0.07095, -0.64786 )
+
+[node name="TransectArea" parent="." index="3" instance=ExtResource( 7 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 3.70961, 0.51712, 2.66985 )
+
+[node name="BasketStar1" parent="." index="4" instance=ExtResource( 4 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0.965832, -0.0444401, -0.61959 )
+
+[node name="BasketStar2" parent="." index="5" instance=ExtResource( 4 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.65014, -0.0420999, -0.52914 )
+
+[node name="coral_garden" parent="." index="6" instance=ExtResource( 3 )]
+transform = Transform( -1.19249e-08, 0, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, 1.19249e-08, 0.585, -0.0950001, -1.101 )
+
+[node name="crab_area" parent="." index="7" instance=ExtResource( 5 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 2.549, -0.179, -0.582 )
+
+[node name="iceberg" parent="." index="8" instance=ExtResource( 6 )]
+transform = Transform( -0.707107, 6.18173e-08, -0.707107, -8.74228e-08, -1, 0, -0.707107, 6.18173e-08, 0.707107, -1.103, -2.539, 1.377 )
