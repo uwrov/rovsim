@@ -31,7 +31,7 @@ func _init_pool():
 		print("PoolManager: added flume POOL instance; saved transform")
 
 func _input(event):
-	# Toggle pool when user presses the P key in the running scene
+	# Toggle pool when user presses the B key in the running scene
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.scancode == KEY_B:
 			toggle_pool()
@@ -55,15 +55,21 @@ func switch_to(target: String):
 	var old = parent_node.get_node_or_null("POOL")
 	var tf := default_transform
 	if old:
-		# capture current POOL transform and reuse it for the new instance
-		tf = old.transform
+		# Recover the shared placement from the current scene's orientation.
+		tf = old.transform * _scene_orientation(current).affine_inverse()
 		parent_node.remove_child(old)
 		old.queue_free()
 	var scene = FLUME_SCENE if target == "flume" else WIND_SCENE
 	var inst = scene.instance()
 	inst.name = "POOL"
-	# apply the captured transform so the new pool matches orientation/position
-	inst.transform = tf
+	# WindWave is upright in its editor scene; compensate at its instance root
+	# to preserve the established runtime placement.
+	inst.transform = tf * _scene_orientation(target)
 	parent_node.add_child(inst)
 	current = target
 	print("PoolManager: switched to %s" % target)
+
+func _scene_orientation(pool_name: String) -> Transform:
+	if pool_name == "windwave":
+		return Transform(Basis(Vector3(-1, 0, 0), Vector3(0, -1, 0), Vector3(0, 0, 1)), Vector3.ZERO)
+	return Transform()
