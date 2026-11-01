@@ -5,3 +5,7 @@
 bin/
 build/
 lib/
+
+# macOS / Editor configs
+.DS_Store
+.vscode/
