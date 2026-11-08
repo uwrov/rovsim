@@ -10,7 +10,7 @@ const POS_KP = 2.0
 var rot_i = Vector3.ZERO
 
 var rot_error_previous := Vector3.ZERO
-var rov_transform_previous := Transform.IDENTITY
+var rov_transform_previous := Transform3D.IDENTITY
 
 
 # a method that's called whenever the waypoint is updated
@@ -37,14 +37,14 @@ func _get_control_output() -> Array:
 	
 	# we calculate error & velocity in world space, but must transform to local
 	# space to calculate the torque the ROV needs to exert locally
-	var lrot = Transform(rov_basis, Vector3.ZERO)
+	var lrot = Transform3D(rov_basis, Vector3.ZERO)
 	
 	# transform to local coordinates
-	var rot_error = lrot.xform_inv(rot_error_world)
+	var rot_error = (rot_error_world) * lrot
 	
 	var rot_p = rot_error
 	rot_i += rot_error * delta
-	var rot_d = lrot.xform_inv((rotation_to(rov_transform_previous, rov_transform)) / delta)
+	var rot_d = ((rotation_to(rov_transform_previous, rov_transform)) / delta) * lrot
 	
 	rov_transform_previous = rov_transform
 	
@@ -55,14 +55,14 @@ func _get_control_output() -> Array:
 	)
 	
 	
-	var pos_error = rov_transform.xform_inv(waypoint_translation)
+	var pos_error = (waypoint_translation) * rov_transform
 	
 	force = pos_error * POS_KP
 	
 	return [force, torque]
 
 
-func rotation_to(a: Transform, b: Transform) -> Vector3:
+func rotation_to(a: Transform3D, b: Transform3D) -> Vector3:
 	return (
 		+ a.basis.x.cross(b.basis.x)
 		+ a.basis.y.cross(b.basis.y)

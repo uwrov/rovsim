@@ -1,4 +1,4 @@
-extends Position3D
+extends Marker3D
 
 const COLOR_STANDARD = Color(0.5, 0.5, 0.5, 0.2)
 const COLOR_COMPLETE = Color(0.5, 1.0, 0.5, 0.2)

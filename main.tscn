@@ -1,181 +1,166 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene format=3 uid="uid://glay5nyktt35"]
 
-[ext_resource path="res://CameraView2.gd" type="Script" id=1]
-[ext_resource path="res://main.gd" type="Script" id=2]
-[ext_resource path="res://missions/waypoint.tscn" type="PackedScene" id=3]
-[ext_resource path="res://pool25-26/flume tank.tscn" type="PackedScene" id=4]
-[ext_resource path="res://rope.tscn" type="PackedScene" id=5]
-[ext_resource path="res://rope.gd" type="Script" id=6]
-[ext_resource path="res://OverviewCamera.gd" type="Script" id=7]
-[ext_resource path="res://toggle_cam.gd" type="Script" id=8]
-[ext_resource path="res://conduit.tscn" type="PackedScene" id=9]
-[ext_resource path="res://pool_manager.gd" type="Script" id=10]
-[ext_resource path="res://CameraView1.gd" type="Script" id=11]
+[ext_resource type="Script" uid="uid://c685fqaa56drw" path="res://CameraView2.gd" id="1"]
+[ext_resource type="Script" uid="uid://gb1g7dlv31x4" path="res://main.gd" id="2"]
+[ext_resource type="PackedScene" path="res://missions/waypoint.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://pool25-26/flume tank.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://rope.tscn" id="5"]
+[ext_resource type="Script" uid="uid://cflhrm8w4fji6" path="res://rope.gd" id="6"]
+[ext_resource type="Script" uid="uid://dynw5hjkreomn" path="res://OverviewCamera.gd" id="7"]
+[ext_resource type="Script" uid="uid://b0622drhnfumk" path="res://toggle_cam.gd" id="8"]
+[ext_resource type="PackedScene" path="res://conduit.tscn" id="9"]
+[ext_resource type="Script" uid="uid://c4xllo50oyp03" path="res://pool_manager.gd" id="10"]
+[ext_resource type="Script" uid="uid://cbk2hhosebjcw" path="res://CameraView1.gd" id="11"]
 
-[node name="Main" type="Spatial"]
-script = ExtResource( 2 )
+[node name="Main" type="Node3D" unique_id=1884920012]
+script = ExtResource("2")
 
-[node name="OverviewCamera" type="Camera" parent="."]
-transform = Transform( 0.93558, 0, -0.353116, 0, 1, 0, 0.353116, 0, 0.93558, -0.352, -0.292, -3.249 )
+[node name="OverviewCamera" type="Camera3D" parent="." unique_id=1536073742]
+transform = Transform3D(0.93558, 0, -0.353116, 0, 1, 0, 0.353116, 0, 0.93558, -0.352, -0.292, -3.249)
 current = true
-script = ExtResource( 7 )
+script = ExtResource("7")
 target_path = NodePath("../ConduitSimplified")
 follow_distance = 1.0
 
-[node name="Tether" parent="." instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.106, -0.439, -3.505 )
+[node name="Tether" parent="." unique_id=806563222 instance=ExtResource("5")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.106, -0.439, -3.505)
 mass = 0.01
-script = ExtResource( 6 )
+script = ExtResource("6")
 rope_length = 100
 height = 0.0
-segment_scene = ExtResource( 5 )
+segment_scene = ExtResource("5")
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.965926, 0, -0.258819, 0.25, -0.258819, 0.933013, -0.0669873, -0.965926, -0.25, 0, 0, 0 )
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1785083867]
+transform = Transform3D(0.965926, 0, -0.258819, 0.25, -0.258819, 0.933013, -0.0669873, -0.965926, -0.25, 0, 0, 0)
 visible = false
 light_energy = 0.2
 shadow_enabled = true
 shadow_bias = 0.01
-directional_shadow_depth_range = 1
 
-[node name="CommandPanelContainer" type="PanelContainer" parent="."]
-margin_right = 14.0
-margin_bottom = 14.0
+[node name="CommandPanelContainer" type="PanelContainer" parent="." unique_id=2017180995]
+offset_right = 14.0
+offset_bottom = 14.0
 
-[node name="CommandGridContainer" type="GridContainer" parent="CommandPanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 187.0
-margin_bottom = 27.0
+[node name="CommandGridContainer" type="GridContainer" parent="CommandPanelContainer" unique_id=1164077817]
+layout_mode = 2
 columns = 2
 
-[node name="ControllerLabel" type="Label" parent="CommandPanelContainer/CommandGridContainer"]
-margin_top = 3.0
-margin_right = 67.0
-margin_bottom = 17.0
+[node name="ControllerLabel" type="Label" parent="CommandPanelContainer/CommandGridContainer" unique_id=1802289781]
+layout_mode = 2
 text = "Controller:"
 
-[node name="ControllerOptionButton" type="OptionButton" parent="CommandPanelContainer/CommandGridContainer"]
+[node name="ControllerOptionButton" type="OptionButton" parent="CommandPanelContainer/CommandGridContainer" unique_id=1915374559]
 unique_name_in_owner = true
-margin_left = 71.0
-margin_right = 180.0
-margin_bottom = 20.0
-text = "0_manual.gd"
+layout_mode = 2
 
-[node name="Waypoints" type="Spatial" parent="."]
+[node name="Waypoints" type="Node3D" parent="." unique_id=1837955512]
 
-[node name="Overlook" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.221521, -0.575943, -3.48251 )
+[node name="Overlook" parent="Waypoints" unique_id=1020826444 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.221521, -0.575943, -3.48251)
 
-[node name="TopLine" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -0.598464, -1.45609 )
+[node name="TopLine" parent="Waypoints" unique_id=1490020838 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -0.598464, -1.45609)
 
-[node name="MidLine" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -2.07365, -1.45609 )
+[node name="MidLine" parent="Waypoints" unique_id=1992771729 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -2.07365, -1.45609)
 
-[node name="BottomLine" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -2.956, -1.45609 )
+[node name="BottomLine" parent="Waypoints" unique_id=1050936392 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -2.956, -1.45609)
 
-[node name="Fish1" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.473, -3.789, -0.575 )
+[node name="Fish1" parent="Waypoints" unique_id=1178231909 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.473, -3.789, -0.575)
 
-[node name="Fish2" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.473, -3.789, -0.575 )
+[node name="Fish2" parent="Waypoints" unique_id=166502416 instance=ExtResource("3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.473, -3.789, -0.575)
 
-[node name="FishUp" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.472613, -3.24627, -0.594734 )
+[node name="FishUp" parent="Waypoints" unique_id=2053598519 instance=ExtResource("3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.472613, -3.24627, -0.594734)
 
-[node name="TransectStart" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.46185, -3.42425, -3.07298 )
+[node name="TransectStart" parent="Waypoints" unique_id=619169636 instance=ExtResource("3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.46185, -3.42425, -3.07298)
 
-[node name="TransectMid1" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.53692, -3.42425, -3.07298 )
+[node name="TransectMid1" parent="Waypoints" unique_id=1786565199 instance=ExtResource("3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.53692, -3.42425, -3.07298)
 
-[node name="TransectMid2" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.488367, -3.42425, -3.07298 )
+[node name="TransectMid2" parent="Waypoints" unique_id=1148234766 instance=ExtResource("3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.488367, -3.42425, -3.07298)
 
-[node name="TransectEnd" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.51519, -3.42425, -3.07298 )
+[node name="TransectEnd" parent="Waypoints" unique_id=1589874734 instance=ExtResource("3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.51519, -3.42425, -3.07298)
 
-[node name="ParkStart" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08572, -3.63577, -1.68727 )
+[node name="ParkStart" parent="Waypoints" unique_id=803548671 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08572, -3.63577, -1.68727)
 
-[node name="ParkIn" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.086, -3.636, -0.179789 )
+[node name="ParkIn" parent="Waypoints" unique_id=465208775 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.086, -3.636, -0.179789)
 
-[node name="ParkOut" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08572, -3.63577, -1.6835 )
+[node name="ParkOut" parent="Waypoints" unique_id=433743375 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08572, -3.63577, -1.6835)
 
-[node name="Return" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0147112, -0.31577, -3.66817 )
+[node name="Return" parent="Waypoints" unique_id=166584276 instance=ExtResource("3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0147112, -0.31577, -3.66817)
 
-[node name="POOL" parent="." instance=ExtResource( 4 )]
-transform = Transform( -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 1.84, -3.759, -3.882 )
+[node name="POOL" parent="." unique_id=450287207 instance=ExtResource("4")]
+transform = Transform3D(-1, -1.509958e-07, 0, 1.509958e-07, -1, 0, 0, 0, 1, 1.84, -3.759, -3.882)
 
-[node name="Walls" parent="POOL/Pool/occurrence of Walls" index="0"]
-transform = Transform( 1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0 )
+[node name="Walls" parent="POOL/Pool/occurrence of Walls" parent_id_path=PackedInt32Array(450287207, 1598591125) index="0" unique_id=96474861]
+transform = Transform3D(1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0)
 
-[node name="PinJoint" type="PinJoint" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101, -0.439, -3.505 )
-nodes/node_a = NodePath("../Tether")
+[node name="PinJoint3D" type="PinJoint3D" parent="." unique_id=687944040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101, -0.439, -3.505)
 
-[node name="PoolManager" type="Spatial" parent="."]
-script = ExtResource( 10 )
+[node name="PoolManager" type="Node3D" parent="." unique_id=1006407818]
+script = ExtResource("10")
 
-[node name="ConduitSimplified" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016917, -0.516496, -3.39143 )
+[node name="ConduitSimplified" parent="." unique_id=1088216817 instance=ExtResource("9")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016917, -0.516496, -3.39143)
+center_of_mass_mode = 1
 
-[node name="CameraMount2" type="Spatial" parent="ConduitSimplified"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428285, 0, 0 )
+[node name="CameraMount2" type="Node3D" parent="ConduitSimplified" unique_id=718057107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428285, 0, 0)
 
-[node name="Camera2" type="Camera" parent="ConduitSimplified/CameraMount2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438181, 0.259642, -0.105552 )
+[node name="Camera2" type="Camera3D" parent="ConduitSimplified/CameraMount2" unique_id=33998393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.438181, 0.259642, -0.105552)
 
-[node name="CameraMount1" type="Spatial" parent="ConduitSimplified"]
-transform = Transform( 1, 2.56568e-09, -1.31627e-09, 1.48097e-09, 1, 2.98023e-08, -1.08643e-09, 0, 1, 0.399986, 0.516496, 3.39143 )
+[node name="CameraMount1" type="Node3D" parent="ConduitSimplified" unique_id=337724154]
+transform = Transform3D(1, 2.56568e-09, -1.31627e-09, 1.48097e-09, 1, 2.98023e-08, -1.08643e-09, 0, 1, 0.399986, 0.516496, 3.39143)
 
-[node name="Camera1" type="Camera" parent="ConduitSimplified/CameraMount1"]
-transform = Transform( -0.064062, -0.997946, 5.31646e-09, 0.282764, -0.0181517, 0.959018, -0.957048, 0.0614366, 0.283346, -0.403529, -0.637305, -3.32255 )
+[node name="Camera1" type="Camera3D" parent="ConduitSimplified/CameraMount1" unique_id=1858552926]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.28401536, 0.95882, 0, -0.95881987, 0.2840154, -0.403529, -0.637305, -3.32255)
 fov = 60.0
 near = 0.01
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-margin_right = 640.0
-margin_bottom = 480.0
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=942669776]
+offset_right = 640.0
+offset_bottom = 480.0
 mouse_filter = 2
 stretch = true
-script = ExtResource( 8 )
-__meta__ = {
-"_editor_description_": ""
-}
+script = ExtResource("8")
 
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 640, 480 )
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1347568889]
 handle_input_locally = false
-render_target_update_mode = 3
-__meta__ = {
-"_editor_description_": ""
-}
+size = Vector2i(640, 480)
+render_target_update_mode = 4
 
-[node name="Camera" type="Camera" parent="ViewportContainer/Viewport"]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1589627750]
 current = true
-script = ExtResource( 11 )
+script = ExtResource("11")
 
-[node name="ViewportContainerForward2" type="ViewportContainer" parent="."]
-margin_left = 640.0
-margin_right = 1285.0
-margin_bottom = 480.0
+[node name="ViewportContainerForward2" type="SubViewportContainer" parent="." unique_id=1704968459]
+offset_left = 640.0
+offset_right = 1285.0
+offset_bottom = 480.0
 mouse_filter = 2
-script = ExtResource( 8 )
+script = ExtResource("8")
 
-[node name="Viewport" type="Viewport" parent="ViewportContainerForward2"]
-size = Vector2( 640, 480 )
+[node name="SubViewport" type="SubViewport" parent="ViewportContainerForward2" unique_id=1469190614]
 handle_input_locally = false
-render_target_update_mode = 3
+size = Vector2i(640, 480)
+render_target_update_mode = 4
 
-[node name="Camera" type="Camera" parent="ViewportContainerForward2/Viewport"]
+[node name="Camera3D" type="Camera3D" parent="ViewportContainerForward2/SubViewport" unique_id=119992627]
 current = true
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [connection signal="item_selected" from="CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]
 

@@ -1,17 +1,17 @@
-extends Spatial
+extends Node3D
 
 const CONTROLLER_BASE = "res://controllers/"
 var CONTROLLERS = load_controllers()
-onready var cob = $"%ControllerOptionButton"
+@onready var cob = $"%ControllerOptionButton"
 
 var active_controller: Controller
 
-onready var waypoints = $Waypoints.get_children()
+@onready var waypoints = $Waypoints.get_children()
 var waypoint_i = 0
 
 #CamSwitch variable
-onready var cam1 = $ConduitSimplified/CameraMount1/Camera1
-onready var cam2 = $ConduitSimplified/CameraMount2/Camera2
+@onready var cam1 = $ConduitSimplified/CameraMount1/Camera1
+@onready var cam2 = $ConduitSimplified/CameraMount2/Camera2
 
 func _ready():
 	print(CONTROLLERS)
@@ -25,7 +25,7 @@ func _ready():
 	waypoints[waypoint_i].color_highlight()
 	
 	# Cam initialize, feel free to change
-	cam1.make_current()
+	#cam1.make_current()
 
 func _physics_process(delta):
 	var rovt = $ConduitSimplified.global_transform
@@ -50,7 +50,7 @@ func _physics_process(delta):
 	$ConduitSimplified.control_torque = ctrl[1]
 #	print(ctrl)
 
-func about_the_same(a: Transform, b: Transform, pos_delta=0.01, rot_delta = 0.1) -> bool:
+func about_the_same(a: Transform3D, b: Transform3D, pos_delta=0.01, rot_delta = 0.1) -> bool:
 	var position_ok = (a.origin - b.origin).length() < pos_delta
 	var rotation_ok = (
 		+ a.basis.x.angle_to(b.basis.x)
@@ -62,17 +62,16 @@ func about_the_same(a: Transform, b: Transform, pos_delta=0.01, rot_delta = 0.1)
 
 func load_controllers() -> Dictionary:
 	var result = {}
-	var dir = Directory.new()
-	dir.open(CONTROLLER_BASE)
-	dir.list_dir_begin(true, true)
-	
-	var filename = dir.get_next()
-	while filename != "":
-		result[filename] = load(CONTROLLER_BASE + filename)
-		filename = dir.get_next()
-	
-	return result
+	var dir = DirAccess.open(CONTROLLER_BASE)
+	if dir == null:
+		push_error("Unable to open controller directory: %s" % CONTROLLER_BASE)
+		return result
 
+	for filename in dir.get_files():
+		if filename.ends_with(".gd"):
+			result[filename] = load(CONTROLLER_BASE + filename)
+
+	return result
 
 func _on_ControllerOptionButton_item_selected(index):
 	var cname: String = cob.get_item_text(index)

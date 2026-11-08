@@ -1,13 +1,13 @@
-extends Camera
+extends Camera3D
 
-export var target_path: NodePath
-var target: RigidBody
+@export var target_path: NodePath
+var target: RigidBody3D
 
-export var follow_distance = 5.0
+@export var follow_distance = 5.0
 
-export var follow_speed = 5.0
-export var rotation_speed = 3.0
-export var mouse_sensitivity = 0.002
+@export var follow_speed = 5.0
+@export var rotation_speed = 3.0
+@export var mouse_sensitivity = 0.002
 
 var camera_angle_x = 0.0
 var camera_angle_y = 0.0
@@ -30,7 +30,7 @@ func _input(event):
 func update_camera_position():
 	var target_pos = target.global_transform.origin
 	
-	var base_rotation = Transform()
+	var base_rotation = Transform3D()
 	base_rotation = base_rotation.rotated(Vector3.UP, camera_angle_y)
 	base_rotation = base_rotation.rotated(Vector3.RIGHT, camera_angle_x)
 	var target_rotation_y = target.global_transform.basis.get_euler().y

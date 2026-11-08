@@ -1,10 +1,10 @@
-extends RigidBody
+extends RigidBody3D
 
-export(NodePath) var forward_camera_location_path setget set_fclp
-export(NodePath) var downward_camera_location_path setget set_dclp
-export(Array, NodePath) var waypoints
-export var use_controller := false
-export(Script) var controller_script
+@export var forward_camera_location_path: NodePath: set = set_fclp
+@export var downward_camera_location_path: NodePath: set = set_dclp
+@export var waypoints # (Array, NodePath)
+@export var use_controller := false
+@export var controller_script: Script
 
 var latency = 0.0  # 0.6 is realistic
 var framerate = 0  # if nonzero, limits FPS; 10 is realistic
@@ -25,8 +25,8 @@ func _physics_process(delta):
 	var cob_location = $COB.get_global_transform().origin - get_global_transform().origin
 	var cob_influence = clamp((-0.04 - get_global_transform().origin.y) * 5.0, 0.0, 1.0)
 	
-	add_force(Vector3.UP * 98 * cob_influence, cob_location)
-	add_force(Vector3.DOWN * 98, Vector3.ZERO)
+	apply_force(cob_location, Vector3.UP * 98 * cob_influence)
+	apply_force(Vector3.ZERO, Vector3.DOWN * 98)
 	
 	var control_vector = [
 		control_translation.x, -control_translation.z, control_translation.y,
@@ -43,10 +43,10 @@ func _physics_process(delta):
 	run_thruster($ThrusterUpLeft, powers[5])
 
 
-func run_thruster(thruster: Spatial, power: float):
-	var position = self.transform.basis.xform(thruster.translation)
+func run_thruster(thruster: Node3D, power: float):
+	var position = self.transform.basis * (thruster.position)
 	var direction = thruster.get_global_transform().basis.y
-	add_force(direction * power * 7.0, position)
+	apply_force(position, direction * power * 7.0)
 
 
 # TODO: instead of this janky setup, we should instead have actual cameras in the scene which are

@@ -1,11 +1,11 @@
-extends Spatial
+extends Node3D
 
 const FLUME_SCENE := preload("res://pool25-26/flume tank.tscn")
 const WIND_SCENE := preload("res://pool25-26/windwave.tscn")
 
 var current := ""
-onready var parent_node := get_parent()
-var default_transform := Transform()
+@onready var parent_node := get_parent()
+var default_transform := Transform3D()
 
 func _ready():
 	# Defer initialization to ensure other nodes (like a POOL instance declared
@@ -23,7 +23,7 @@ func _init_pool():
 		default_transform = existing.transform
 		print("PoolManager: detected existing POOL instance, assuming flume; saved transform")
 	else:
-		var inst = FLUME_SCENE.instance()
+		var inst = FLUME_SCENE.instantiate()
 		inst.name = "POOL"
 		parent_node.add_child(inst)
 		current = "flume"
@@ -33,7 +33,7 @@ func _init_pool():
 func _input(event):
 	# Toggle pool when user presses the B key in the running scene
 	if event is InputEventKey and event.pressed and not event.echo:
-		if event.scancode == KEY_B:
+		if event.keycode == KEY_B:
 			toggle_pool()
 
 func toggle_pool():
@@ -60,7 +60,7 @@ func switch_to(target: String):
 		parent_node.remove_child(old)
 		old.queue_free()
 	var scene = FLUME_SCENE if target == "flume" else WIND_SCENE
-	var inst = scene.instance()
+	var inst = scene.instantiate()
 	inst.name = "POOL"
 	# WindWave is upright in its editor scene; compensate at its instance root
 	# to preserve the established runtime placement.
@@ -69,7 +69,7 @@ func switch_to(target: String):
 	current = target
 	print("PoolManager: switched to %s" % target)
 
-func _scene_orientation(pool_name: String) -> Transform:
+func _scene_orientation(pool_name: String) -> Transform3D:
 	if pool_name == "windwave":
-		return Transform(Basis(Vector3(-1, 0, 0), Vector3(0, -1, 0), Vector3(0, 0, 1)), Vector3.ZERO)
-	return Transform()
+		return Transform3D(Basis(Vector3(-1, 0, 0), Vector3(0, -1, 0), Vector3(0, 0, 1)), Vector3.ZERO)
+	return Transform3D()

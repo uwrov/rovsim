@@ -1,12 +1,12 @@
-extends Camera
+extends Camera3D
 
 # Copy of CameraView1 for the 2nd camera
 
-onready var target = null
+@onready var target = null
 
 func _ready():
 
-	target = get_tree().get_root().find_node("Camera2", true, false)
+	target = get_tree().get_root().find_child("Camera2", true, false)
 
 
 func _process(_delta):

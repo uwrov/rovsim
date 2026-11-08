@@ -1,10 +1,10 @@
-extends RigidBody
+extends RigidBody3D
 
-export(NodePath) var forward_camera_location_path setget set_fclp
-export(NodePath) var downward_camera_location_path setget set_dclp
-export(Array, NodePath) var waypoints
-export var use_controller := false
-export(Script) var controller_script
+@export var forward_camera_location_path: NodePath: set = set_fclp
+@export var downward_camera_location_path: NodePath: set = set_dclp
+@export var waypoints: Array[NodePath] = [] # declaring an empty array of node paths
+@export var use_controller := false
+@export var controller_script: Script
 
 var latency = 0.0  # 0.6 is realistic
 var framerate = 0  # if nonzero, limits FPS; 10 is realistic
@@ -31,7 +31,7 @@ const thruster_mat = [[ 0.52,  0.0 , -0.0 ,  0.0 ,  1.57,  0.0 ],
 	   [ 0.02, -0.0 ,  0.5 ,  0.0 ,  1.57, -0.0 ],
 	   [ 0.05,  0.51, -0.0 ,  0.0 , -0.0 ,  3.15],
 	   [-0.05,  0.49, -0.0 ,  0.0 ,  0.0 , -3.15]]
-onready var thrusters = [
+@onready var thrusters = [
 	$top,
 	$bottom,
 	$left_up,
@@ -42,7 +42,7 @@ onready var thrusters = [
 
 func _ready():
 	if framerate > 0:
-		Engine.target_fps = framerate
+		Engine.max_fps = framerate #godot changed the property name
 
 func _process(_delta):
 	pass
@@ -51,8 +51,8 @@ func _physics_process(_delta):
 	var cob_location = $COB.get_global_transform().origin - get_global_transform().origin
 	var cob_influence = clamp((-0.04 - get_global_transform().origin.y) * 5.0, 0.0, 1.0)
 	
-	add_force(Vector3.UP * 98 * cob_influence, cob_location)
-	add_force(Vector3.DOWN * 98, Vector3.ZERO)
+	apply_force(Vector3.UP * 98 * cob_influence, cob_location)
+	apply_central_force(Vector3.DOWN * 98)
 	
 	var control_vector = [
 		control_translation.x, -control_translation.z, control_translation.y,
@@ -90,10 +90,10 @@ func _integrate_forces(state):
 			trans.origin += normal * 0.01
 			state.set_transform(trans)
 
-func run_thruster(thruster: Spatial, power: float):
-	var position = self.transform.basis.xform(thruster.translation)
+func run_thruster(thruster: Node3D, power: float):
+	var position = self.transform.basis * (thruster.position)
 	var direction = thruster.get_global_transform().basis.y
-	add_force(direction * power * 7.0, position)
+	apply_force(direction * power * 7.0, position)
 
 func set_fclp(path):
 	forward_camera_location_path = path
@@ -125,4 +125,3 @@ func limit_powers(powers: Array) -> Array:
 	for i in range(len(powers)):
 		result.append(powers[i] * norm_factor)
 	return result
-

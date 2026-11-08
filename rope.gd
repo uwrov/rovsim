@@ -1,9 +1,9 @@
-extends RigidBody
+extends RigidBody3D
 
-export var rope_length = 10
-export var curl = 0.1
-export var height = 0.0002
-export var segment_scene: PackedScene
+@export var rope_length = 10
+@export var curl = 0.1
+@export var height = 0.0002
+@export var segment_scene: PackedScene
 
 var rope_segments = []
 
@@ -14,14 +14,14 @@ func _ready():
 func create_rope():
 	rope_segments.append(self)
 	var previous_body = self
-	var segment_height = find_node("MeshInstance", true, false).mesh.height
+	var segment_height = find_child("MeshInstance3D", true, false).mesh.height
 	
 	var parent = get_parent()
 	
 	var yaw = 0
 	
 	for i in range(1, rope_length):
-		var segment = segment_scene.instance()
+		var segment = segment_scene.instantiate()
 		parent.add_child(segment)
 		
 		segment.rotation = previous_body.rotation
@@ -30,20 +30,20 @@ func create_rope():
 		var seg_x = cos(yaw) * -segment_height
 		var seg_y = height
 		var seg_z = sin(yaw) * -segment_height
-		segment.translation = previous_body.translation + Vector3(seg_x, seg_y, seg_z)
+		segment.position = previous_body.position + Vector3(seg_x, seg_y, seg_z)
 		
 		rope_segments.append(segment)
 		
-		var pin_joint = PinJoint.new()
+		var pin_joint = PinJoint3D.new()
 		parent.add_child(pin_joint)
-		pin_joint.translation = previous_body.translation + Vector3(seg_x / 2, seg_y / 2, seg_z / 2)
+		pin_joint.position = previous_body.position + Vector3(seg_x / 2, seg_y / 2, seg_z / 2)
 		
 		pin_joint.set_node_a(pin_joint.get_path_to(previous_body))
 		pin_joint.set_node_b(pin_joint.get_path_to(segment))
 		
-		pin_joint.set_param(PinJoint.PARAM_BIAS, 0.3)
-		pin_joint.set_param(PinJoint.PARAM_DAMPING, 1.0)
-		pin_joint.set_param(PinJoint.PARAM_IMPULSE_CLAMP, 0.0)
+		pin_joint.set_param(PinJoint3D.PARAM_BIAS, 0.3)
+		pin_joint.set_param(PinJoint3D.PARAM_DAMPING, 1.0)
+		pin_joint.set_param(PinJoint3D.PARAM_IMPULSE_CLAMP, 0.0)
 		
 		previous_body = segment
 		yaw += curl
