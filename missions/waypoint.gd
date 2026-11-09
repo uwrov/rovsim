@@ -1,8 +1,14 @@
 extends Position3D
 
+export var inspection := false
+export(float, 0.1, 10.0, 0.1) var inspection_hold_time := 0.5
+export(float, 0.0, 1.0, 0.01) var inspection_linear_speed := 0.03 # m/s
+export(float, 0.0, 1.0, 0.01) var inspection_angular_speed := 0.05 # rad/s
+
 const COLOR_STANDARD = Color(0.5, 0.5, 0.5, 0.2)
 const COLOR_COMPLETE = Color(0.5, 1.0, 0.5, 0.2)
 const COLOR_HIGHLIGHT = Color(1.0, 1.0, 1.0, 0.2)
+const COLOR_INSPECTION = Color(1.0, 0.75, 0.2, 0.3)
 
 onready var _visual_root = $ROV23Visual
 var _shared_override_material: SpatialMaterial = null
@@ -18,7 +24,7 @@ func color_complete():
 	_set_visual_color(COLOR_COMPLETE)
 
 func color_highlight():
-	_set_visual_color(COLOR_HIGHLIGHT)
+	_set_visual_color(COLOR_INSPECTION if inspection else COLOR_HIGHLIGHT)
 
 func color_standard():
 	_set_visual_color(COLOR_STANDARD)
