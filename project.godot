@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "Controller",
 "language": "GDScript",
 "path": "res://controller.gd"
-}, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://addons/godot-git-plugin/git_api.gdns"
 } ]
 _global_script_class_icons={
-"Controller": "",
-"GitAPI": ""
+"Controller": ""
 }
 
 [application]
@@ -34,10 +28,6 @@ config/icon="res://icon.png"
 
 window/size/width=1280
 window/size/height=480
-
-[gdnative]
-
-singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 
 [global]
 
