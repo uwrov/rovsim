@@ -9,3 +9,6 @@ lib/
 # macOS / Editor configs
 .DS_Store
 .vscode/
+
+# Python validation tools
+__pycache__/
