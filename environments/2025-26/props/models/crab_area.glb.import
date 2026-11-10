@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/coral_garden.glb-4c1076fa4b9550cdf82e5647b052f47e.scn"
+path="res://.import/crab_area.glb-1a7a27cd52e6175a705e8669460fe3bb.scn"
 
 [deps]
 
-source_file="res://missions/coral_garden.glb"
-dest_files=[ "res://.import/coral_garden.glb-4c1076fa4b9550cdf82e5647b052f47e.scn" ]
+source_file="res://environments/2025-26/props/models/crab_area.glb"
+dest_files=[ "res://.import/crab_area.glb-1a7a27cd52e6175a705e8669460fe3bb.scn" ]
 
 [params]
 
@@ -21,7 +21,7 @@ materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
 meshes/octahedral_compression=true
-meshes/compress=4286
+meshes/compress=190
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0

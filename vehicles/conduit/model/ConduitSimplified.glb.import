@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/windwave.gltf-d6eef30fdb335466494f49a4b816e9ed.scn"
+path="res://.import/ConduitSimplified.glb-d7a43e5c9db125be481a50cdab123917.scn"
 
 [deps]
 
-source_file="res://windwave.gltf"
-dest_files=[ "res://.import/windwave.gltf-d6eef30fdb335466494f49a4b816e9ed.scn" ]
+source_file="res://vehicles/conduit/model/ConduitSimplified.glb"
+dest_files=[ "res://.import/ConduitSimplified.glb-d7a43e5c9db125be481a50cdab123917.scn" ]
 
 [params]
 
@@ -20,10 +20,9 @@ nodes/use_legacy_names=false
 materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
-meshes/compress=4286
+meshes/octahedral_compression=false
+meshes/compress=190
 meshes/ensure_tangents=true
-meshes/octahedral_compression=true
-meshes/vertex_cache_optimization=true
 meshes/storage=0
 meshes/light_baking=0
 meshes/lightmap_texel_size=0.1

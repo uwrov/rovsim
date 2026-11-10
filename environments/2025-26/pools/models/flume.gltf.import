@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/ConduitSimplified.glb-0a9ccf1d0be76a881a214fc2815788df.scn"
+path="res://.import/flume.gltf-010b962aae458b663e3034968c21348c.scn"
 
 [deps]
 
-source_file="res://rov/model/ConduitSimplified.glb"
-dest_files=[ "res://.import/ConduitSimplified.glb-0a9ccf1d0be76a881a214fc2815788df.scn" ]
+source_file="res://environments/2025-26/pools/models/flume.gltf"
+dest_files=[ "res://.import/flume.gltf-010b962aae458b663e3034968c21348c.scn" ]
 
 [params]
 
@@ -20,8 +20,8 @@ nodes/use_legacy_names=false
 materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
-meshes/octahedral_compression=true
-meshes/compress=4286
+meshes/octahedral_compression=false
+meshes/compress=190
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0

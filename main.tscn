@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://CameraView2.gd" type="Script" id=1]
+[ext_resource path="res://cameras/onboard_camera_2.gd" type="Script" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
-[ext_resource path="res://pool25-26/flume tank.tscn" type="PackedScene" id=4]
-[ext_resource path="res://rope.tscn" type="PackedScene" id=5]
-[ext_resource path="res://rope.gd" type="Script" id=6]
-[ext_resource path="res://OverviewCamera.gd" type="Script" id=7]
-[ext_resource path="res://conduit.tscn" type="PackedScene" id=9]
-[ext_resource path="res://pool_manager.gd" type="Script" id=10]
-[ext_resource path="res://CameraView1.gd" type="Script" id=11]
+[ext_resource path="res://environments/2025-26/pools/flume.tscn" type="PackedScene" id=4]
+[ext_resource path="res://shared/tether/tether.tscn" type="PackedScene" id=5]
+[ext_resource path="res://shared/tether/tether.gd" type="Script" id=6]
+[ext_resource path="res://cameras/overview_camera.gd" type="Script" id=7]
+[ext_resource path="res://vehicles/conduit/conduit.tscn" type="PackedScene" id=9]
+[ext_resource path="res://environments/pool_manager.gd" type="Script" id=10]
+[ext_resource path="res://cameras/onboard_camera_1.gd" type="Script" id=11]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )

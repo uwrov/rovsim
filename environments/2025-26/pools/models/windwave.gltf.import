@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/transect_area.glb-978e0c0e0ecf63d13d03eed09e900def.scn"
+path="res://.import/windwave.gltf-f76d4ce70b81da7342e935f606b2abb3.scn"
 
 [deps]
 
-source_file="res://missions/transect_area.glb"
-dest_files=[ "res://.import/transect_area.glb-978e0c0e0ecf63d13d03eed09e900def.scn" ]
+source_file="res://environments/2025-26/pools/models/windwave.gltf"
+dest_files=[ "res://.import/windwave.gltf-f76d4ce70b81da7342e935f606b2abb3.scn" ]
 
 [params]
 
@@ -21,7 +21,7 @@ materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
 meshes/octahedral_compression=true
-meshes/compress=4286
+meshes/compress=190
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0

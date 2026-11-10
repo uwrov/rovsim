@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://rov/model/Electronics.material" type="Material" id=1]
+[ext_resource path="res://shared/tether/tether.material" type="Material" id=1]
 
 [sub_resource type="CylinderMesh" id=1]
 material = ExtResource( 1 )

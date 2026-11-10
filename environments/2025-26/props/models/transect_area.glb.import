@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/iceberg.glb-d9e5f2661a9c56ba09324206b8d0f5fe.scn"
+path="res://.import/transect_area.glb-e59cbde7524339a00bceaa87f41c8008.scn"
 
 [deps]
 
-source_file="res://missions/iceberg.glb"
-dest_files=[ "res://.import/iceberg.glb-d9e5f2661a9c56ba09324206b8d0f5fe.scn" ]
+source_file="res://environments/2025-26/props/models/transect_area.glb"
+dest_files=[ "res://.import/transect_area.glb-e59cbde7524339a00bceaa87f41c8008.scn" ]
 
 [params]
 
@@ -21,7 +21,7 @@ materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
 meshes/octahedral_compression=true
-meshes/compress=4286
+meshes/compress=190
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0

@@ -1,7 +1,7 @@
 extends Spatial
 
-const FLUME_SCENE := preload("res://pool25-26/flume tank.tscn")
-const WIND_SCENE := preload("res://pool25-26/windwave.tscn")
+const FLUME_SCENE := preload("res://environments/2025-26/pools/flume.tscn")
+const WIND_SCENE := preload("res://environments/2025-26/pools/windwave.tscn")
 
 var current := ""
 onready var parent_node := get_parent()

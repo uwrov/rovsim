@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/basket_star.glb-98a24f6b9e9a7d17de3fc696d9de3f31.scn"
+path="res://.import/iceberg.glb-00f50812493ddc414e31f5b61665f8db.scn"
 
 [deps]
 
-source_file="res://missions/basket_star.glb"
-dest_files=[ "res://.import/basket_star.glb-98a24f6b9e9a7d17de3fc696d9de3f31.scn" ]
+source_file="res://environments/2025-26/props/models/iceberg.glb"
+dest_files=[ "res://.import/iceberg.glb-00f50812493ddc414e31f5b61665f8db.scn" ]
 
 [params]
 
@@ -21,7 +21,7 @@ materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
 meshes/octahedral_compression=true
-meshes/compress=4286
+meshes/compress=190
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0
