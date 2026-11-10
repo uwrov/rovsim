@@ -26,6 +26,7 @@ script = ExtResource( 6 )
 rope_length = 100
 height = 0.0
 segment_scene = ExtResource( 5 )
+attached_body_path = NodePath("../ConduitSimplified")
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.965926, 0, -0.258819, 0.25, -0.258819, 0.933013, -0.0669873, -0.965926, -0.25, 0, 0, 0 )
@@ -73,6 +74,7 @@ transform = Transform( 1, 0, -3.28405e-15, 0, 1, 0, -3.28405e-15, 0, 1, 0, 0, 0 
 [node name="PinJoint" type="PinJoint" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101, -0.439, -3.505 )
 nodes/node_a = NodePath("../Tether")
+nodes/node_b = NodePath("../ConduitSimplified")
 
 [node name="PoolManager" type="Spatial" parent="."]
 script = ExtResource( 10 )

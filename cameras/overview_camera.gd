@@ -1,5 +1,7 @@
 extends Camera
 
+const MAX_PITCH = PI * 85.0 / 180.0
+
 export var target_path: NodePath
 var target: RigidBody
 
@@ -46,20 +48,11 @@ func _unhandled_input(event):
 	get_viewport().set_input_as_handled()
 
 func update_camera_position():
+	camera_angle_x = clamp(camera_angle_x, -MAX_PITCH, MAX_PITCH)
 	var target_pos = target.global_transform.origin
-	
-	var base_rotation = Transform()
-	base_rotation = base_rotation.rotated(Vector3.UP, camera_angle_y)
-	base_rotation = base_rotation.rotated(Vector3.RIGHT, camera_angle_x)
 	var target_rotation_y = target.global_transform.basis.get_euler().y
-	base_rotation = base_rotation.rotated(Vector3.UP, target_rotation_y)
-	
-	
-	var offset = Vector3(0, 0, follow_distance)
-	var rotated_offset = base_rotation.basis * offset
-	
-	var desired_position = target_pos + rotated_offset
-	
-	global_transform.origin = desired_position
-	
+	# Pitch around the orbit's right axis, then yaw around world up. Pitching
+	# around world X after yaw made vertical mouse motion fail at side views.
+	var orbit = Basis(Vector3.UP, camera_angle_y + target_rotation_y) * Basis(Vector3.RIGHT, camera_angle_x)
+	global_transform.origin = target_pos + orbit * Vector3(0, 0, follow_distance)
 	look_at(target_pos, Vector3.UP)

@@ -109,6 +109,11 @@ camSwitch={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="World and ROV"
+3d_physics/layer_2="Tether"
+
 [physics]
 
 common/enable_pause_aware_picking=true
