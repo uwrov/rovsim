@@ -90,5 +90,7 @@ func _toggle_view():
 	_update_camera_panes()
 
 func _update_camera_panes():
+	var panes_visible = _onboard_panes_visible and not overview_camera.current
 	for pane in camera_panes:
-		pane.visible = _onboard_panes_visible and not overview_camera.current
+		pane.visible = panes_visible
+	get_viewport().disable_3d = panes_visible
