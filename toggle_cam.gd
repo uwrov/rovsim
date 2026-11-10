@@ -2,10 +2,11 @@ extends ViewportContainer
 
 var is_toggling = false
 
-func _input(event):
-	if event is InputEventKey and event.pressed and not event.echo and event.scancode == KEY_ESCAPE:
-		if not is_toggling:
-			toggle_visibility()
+#Won't be needing normal camera views for this deliverable
+#func _input(event):
+#	if event is InputEventKey and event.pressed and not event.echo and event.scancode == KEY_ESCAPE:
+#		if not is_toggling:
+#			toggle_visibility()
 
 func toggle_visibility():
 	is_toggling = true
