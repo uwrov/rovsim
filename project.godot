@@ -29,12 +29,6 @@ config/icon="res://icon.png"
 window/size/width=1280
 window/size/height=480
 
-[global]
-
-"full screen"=false
-fullscreen=false
-fullscree=false
-
 [input]
 
 rov_translate_up={

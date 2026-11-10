@@ -8,13 +8,12 @@ export var segment_scene: PackedScene
 var rope_segments = []
 
 func _ready():
-	#Engine.time_scale = 0.00001
 	call_deferred("create_rope")
 
 func create_rope():
 	rope_segments.append(self)
 	var previous_body = self
-	var segment_height = find_node("MeshInstance", true, false).mesh.height
+	var segment_height = $MeshInstance.mesh.height
 	
 	var parent = get_parent()
 	

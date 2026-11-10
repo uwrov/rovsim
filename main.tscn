@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://cameras/onboard_camera_2.gd" type="Script" id=1]
+[ext_resource path="res://cameras/onboard_camera.gd" type="Script" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
 [ext_resource path="res://environments/2025-26/pools/flume.tscn" type="PackedScene" id=4]
 [ext_resource path="res://shared/tether/tether.tscn" type="PackedScene" id=5]
@@ -8,7 +8,6 @@
 [ext_resource path="res://cameras/overview_camera.gd" type="Script" id=7]
 [ext_resource path="res://vehicles/conduit/conduit.tscn" type="PackedScene" id=9]
 [ext_resource path="res://environments/pool_manager.gd" type="Script" id=10]
-[ext_resource path="res://cameras/onboard_camera_1.gd" type="Script" id=11]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
@@ -114,7 +113,8 @@ __meta__ = {
 
 [node name="Camera" type="Camera" parent="ViewportContainer/Viewport"]
 current = true
-script = ExtResource( 11 )
+script = ExtResource( 1 )
+target_path = NodePath("../../../ConduitSimplified/CameraMount1/Camera1")
 
 [node name="ViewportContainerForward2" type="ViewportContainer" parent="."]
 anchor_left = 0.5
@@ -131,6 +131,7 @@ render_target_update_mode = 3
 [node name="Camera" type="Camera" parent="ViewportContainerForward2/Viewport"]
 current = true
 script = ExtResource( 1 )
+target_path = NodePath("../../../ConduitSimplified/CameraMount2/Camera2")
 
 [connection signal="item_selected" from="UI/CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]
 

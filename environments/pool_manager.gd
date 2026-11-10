@@ -11,9 +11,6 @@ func _ready():
 	# Defer initialization to ensure other nodes (like a POOL instance declared
 	# later in the scene file) are created first. This avoids duplicate POOL nodes.
 	call_deferred("_init_pool")
-	# Ensure this node receives input events
-	set_process_input(true)
-	set_process_unhandled_input(true)
 
 func _init_pool():
 	# run after the scene has finished instancing nodes
@@ -43,12 +40,11 @@ func toggle_pool():
 		switch_to("flume")
 
 func switch_to_flume():
-	# public wrapper
 	switch_to("flume")
 
 func switch_to_windwave():
-	# public wrapper
 	switch_to("windwave")
+
 func switch_to(target: String):
 	if current == target:
 		return

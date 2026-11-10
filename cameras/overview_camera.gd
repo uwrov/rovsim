@@ -8,8 +8,6 @@ export(float, 0.1, 20.0) var min_follow_distance = 0.6
 export(float, 0.1, 50.0) var max_follow_distance = 10.0
 export(float, 0.01, 1.0) var zoom_step = 0.15
 
-export var follow_speed = 5.0
-export var rotation_speed = 3.0
 export var mouse_sensitivity = 0.002
 
 var camera_angle_x = 0.0
@@ -24,7 +22,7 @@ func _ready():
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _process(delta):
+func _process(_delta):
 	update_camera_position()
 
 func _input(event):

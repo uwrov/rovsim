@@ -6,6 +6,7 @@ var CONTROLLERS = load_controllers()
 onready var cob = $"%ControllerOptionButton"
 
 var active_controller: Controller
+onready var rov: RigidBody = $ConduitSimplified
 
 onready var cam1 = $ConduitSimplified/CameraMount1/Camera1
 onready var cam2 = $ConduitSimplified/CameraMount2/Camera2
@@ -36,11 +37,10 @@ func _ready():
 	_update_camera_panes()
 
 func _physics_process(delta):
-	var rovt = $ConduitSimplified.global_transform
-	active_controller.tick(rovt, delta)
+	active_controller.tick(rov.global_transform, delta)
 	var ctrl := active_controller._get_control_output()
-	$ConduitSimplified.control_translation = ctrl[0]
-	$ConduitSimplified.control_torque = ctrl[1]
+	rov.control_translation = ctrl[0]
+	rov.control_torque = ctrl[1]
 
 func load_controllers() -> Dictionary:
 	var result = {}

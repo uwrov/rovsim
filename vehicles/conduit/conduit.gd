@@ -1,13 +1,6 @@
 extends RigidBody
 
-export(NodePath) var forward_camera_location_path setget set_fclp
-export(NodePath) var downward_camera_location_path setget set_dclp
-export var use_controller := false
-export(Script) var controller_script
-
-var latency = 0.0  # 0.6 is realistic
-var framerate = 0  # if nonzero, limits FPS; 10 is realistic
-
+# Body-axis requests supplied by main.gd's active Controller.
 var control_translation := Vector3.ZERO
 var control_torque := Vector3.ZERO
 
@@ -30,13 +23,6 @@ onready var thrusters = [
 	$left_back,
 	$right_back
 ]
-
-func _ready():
-	if framerate > 0:
-		Engine.target_fps = framerate
-
-func _process(_delta):
-	pass
 
 func _physics_process(_delta):
 	var cob_location = $COB.get_global_transform().origin - get_global_transform().origin
@@ -69,7 +55,7 @@ func _integrate_forces(state):
 		if abs(normal.y) < wall_normal_y_threshold:
 			var v = state.linear_velocity
 
-			# Reflect velocity across the contact normal and scale by bounce_energy
+			# Reflect velocity across the contact normal.
 			var reflected = v.bounce(normal) 
 			state.linear_velocity = reflected
 			# Slightly damp angular velocity on bounce to avoid wild spins
@@ -83,18 +69,6 @@ func run_thruster(thruster: Spatial, power: float):
 	var position = self.transform.basis.xform(thruster.translation)
 	var direction = thruster.get_global_transform().basis.y
 	add_force(direction * power * 7.0, position)
-
-func set_fclp(path):
-	forward_camera_location_path = path
-	var fcl = get_node_or_null("ForwardCameraLocation")
-	if fcl:
-		fcl.remote_path = NodePath("../" + str(forward_camera_location_path))
-
-func set_dclp(path):
-	downward_camera_location_path = path
-	var dcl = get_node_or_null("DownwardCameraLocation")
-	if dcl:
-		dcl.remote_path = NodePath("../" + str(downward_camera_location_path))
 
 func mat_transform(mat, vector):
 	var result := []
