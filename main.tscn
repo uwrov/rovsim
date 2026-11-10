@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://CameraView2.gd" type="Script" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
-[ext_resource path="res://missions/waypoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://pool25-26/flume tank.tscn" type="PackedScene" id=4]
 [ext_resource path="res://rope.tscn" type="PackedScene" id=5]
 [ext_resource path="res://rope.gd" type="Script" id=6]
@@ -61,53 +60,6 @@ margin_left = 71.0
 margin_right = 180.0
 margin_bottom = 20.0
 text = "0_manual.gd"
-
-[node name="Waypoints" type="Spatial" parent="."]
-
-[node name="Overlook" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.221521, -0.575943, -3.48251 )
-
-[node name="TopLine" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -0.598464, -1.45609 )
-
-[node name="MidLine" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -2.07365, -1.45609 )
-
-[node name="BottomLine" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26052, -2.956, -1.45609 )
-
-[node name="Fish1" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.473, -3.789, -0.575 )
-
-[node name="Fish2" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.473, -3.789, -0.575 )
-
-[node name="FishUp" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.472613, -3.24627, -0.594734 )
-
-[node name="TransectStart" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.46185, -3.42425, -3.07298 )
-
-[node name="TransectMid1" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.53692, -3.42425, -3.07298 )
-
-[node name="TransectMid2" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.488367, -3.42425, -3.07298 )
-
-[node name="TransectEnd" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.51519, -3.42425, -3.07298 )
-
-[node name="ParkStart" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08572, -3.63577, -1.68727 )
-
-[node name="ParkIn" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.086, -3.636, -0.179789 )
-
-[node name="ParkOut" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08572, -3.63577, -1.6835 )
-
-[node name="Return" parent="Waypoints" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0147112, -0.31577, -3.66817 )
 
 [node name="POOL" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 1.84, -3.759, -3.882 )

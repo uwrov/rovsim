@@ -3,13 +3,7 @@ extends "res://controller.gd"
 ### YOU MAY ADD VARIABLES HERE ###
 ### you may add whatever other variables you think would be helpful ###
 
-# a method that's called whenever the waypoint is updated
-# you may want to reset/recalculate certain things in your controller
-func _waypoint_updated() -> void:
-	pass
-
-
-# a method you write that will run the ROV to the current waypoint
+# a method you write that commands the ROV
 # returns an array of [force: Vector3, torque: Vector3]
 func _get_control_output() -> Array:
 	var force := Vector3.ZERO

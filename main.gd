@@ -6,9 +6,6 @@ onready var cob = $"%ControllerOptionButton"
 
 var active_controller: Controller
 
-onready var waypoints = $Waypoints.get_children()
-var waypoint_i = 0
-
 #CamSwitch variable
 onready var cam1 = $ConduitSimplified/CameraMount1/Camera1
 onready var cam2 = $ConduitSimplified/CameraMount2/Camera2
@@ -22,43 +19,17 @@ func _ready():
 		cob.add_item(filename)
 	cob.select(0)  # selects first controller in list
 	_on_ControllerOptionButton_item_selected(0)  # and runs the signal
-	waypoints[waypoint_i].color_highlight()
 	
 	# Cam initialize, feel free to change
 	cam1.make_current()
 
 func _physics_process(delta):
 	var rovt = $ConduitSimplified.global_transform
-	var wayt = waypoints[waypoint_i].global_transform
-	
-	if about_the_same(rovt, wayt) or not waypoints[waypoint_i].visible:
-		if waypoint_i >= len(waypoints) - 1:
-			waypoint_i = 0
-			for i in range(len(waypoints)):
-				waypoints[i].color_standard()
-			waypoints[waypoint_i].color_highlight()
-		else:
-			waypoints[waypoint_i].color_complete()
-			waypoint_i += 1
-			waypoints[waypoint_i].color_highlight()
-		active_controller.set_waypoint_transform(waypoints[waypoint_i].global_transform)
-		active_controller._waypoint_updated()
-	
-	active_controller.tick(rovt, wayt, delta)
+	active_controller.tick(rovt, delta)
 	var ctrl := active_controller._get_control_output()
 	$ConduitSimplified.control_translation = ctrl[0]
 	$ConduitSimplified.control_torque = ctrl[1]
 #	print(ctrl)
-
-func about_the_same(a: Transform, b: Transform, pos_delta=0.01, rot_delta = 0.1) -> bool:
-	var position_ok = (a.origin - b.origin).length() < pos_delta
-	var rotation_ok = (
-		+ a.basis.x.angle_to(b.basis.x)
-		+ a.basis.y.angle_to(b.basis.y)
-		+ a.basis.z.angle_to(b.basis.z)
-	) < rot_delta
-	
-	return position_ok and rotation_ok
 
 func load_controllers() -> Dictionary:
 	var result = {}
@@ -68,8 +39,10 @@ func load_controllers() -> Dictionary:
 	
 	var filename = dir.get_next()
 	while filename != "":
-		result[filename] = load(CONTROLLER_BASE + filename)
+		if not dir.current_is_dir() and filename.ends_with(".gd"):
+			result[filename] = load(CONTROLLER_BASE + filename)
 		filename = dir.get_next()
+	dir.list_dir_end()
 	
 	return result
 
