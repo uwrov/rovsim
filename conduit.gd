@@ -91,9 +91,9 @@ func _integrate_forces(state):
 			state.set_transform(trans)
 
 func run_thruster(thruster: Node3D, power: float):
-	var position = self.transform.basis * (thruster.position)
+	var force_offset = self.transform.basis * (thruster.position)
 	var direction = thruster.get_global_transform().basis.y
-	apply_force(direction * power * 7.0, position)
+	apply_force(direction * power * 7.0, force_offset)
 
 func set_fclp(path):
 	forward_camera_location_path = path

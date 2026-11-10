@@ -32,7 +32,6 @@ segment_scene = ExtResource("5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1785083867]
 transform = Transform3D(0.965926, 0, -0.258819, 0.25, -0.258819, 0.933013, -0.0669873, -0.965926, -0.25, 0, 0, 0)
-visible = false
 light_energy = 0.2
 shadow_enabled = true
 shadow_bias = 0.01

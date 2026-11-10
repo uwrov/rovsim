@@ -79,7 +79,7 @@ func _on_ControllerOptionButton_item_selected(index):
 	active_controller = CONTROLLERS[cname].new()
 
 # More camswitch
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("camSwitch"):
 		if (cam1.current):
 			cam2.make_current()
