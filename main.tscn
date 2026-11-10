@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://CameraView2.gd" type="Script" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://rope.tscn" type="PackedScene" id=5]
 [ext_resource path="res://rope.gd" type="Script" id=6]
 [ext_resource path="res://OverviewCamera.gd" type="Script" id=7]
-[ext_resource path="res://toggle_cam.gd" type="Script" id=8]
 [ext_resource path="res://conduit.tscn" type="PackedScene" id=9]
 [ext_resource path="res://pool_manager.gd" type="Script" id=10]
 [ext_resource path="res://CameraView1.gd" type="Script" id=11]
@@ -37,24 +36,29 @@ shadow_enabled = true
 shadow_bias = 0.01
 directional_shadow_depth_range = 1
 
-[node name="CommandPanelContainer" type="PanelContainer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 1
+
+[node name="CommandPanelContainer" type="PanelContainer" parent="UI"]
+margin_left = 12.0
+margin_top = 12.0
 margin_right = 14.0
 margin_bottom = 14.0
 
-[node name="CommandGridContainer" type="GridContainer" parent="CommandPanelContainer"]
+[node name="CommandGridContainer" type="GridContainer" parent="UI/CommandPanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 187.0
 margin_bottom = 27.0
 columns = 2
 
-[node name="ControllerLabel" type="Label" parent="CommandPanelContainer/CommandGridContainer"]
+[node name="ControllerLabel" type="Label" parent="UI/CommandPanelContainer/CommandGridContainer"]
 margin_top = 3.0
 margin_right = 67.0
 margin_bottom = 17.0
-text = "Controller:"
+text = "Controller (F2):"
 
-[node name="ControllerOptionButton" type="OptionButton" parent="CommandPanelContainer/CommandGridContainer"]
+[node name="ControllerOptionButton" type="OptionButton" parent="UI/CommandPanelContainer/CommandGridContainer"]
 unique_name_in_owner = true
 margin_left = 71.0
 margin_right = 180.0
@@ -92,11 +96,10 @@ fov = 60.0
 near = 0.01
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
-margin_right = 640.0
-margin_bottom = 480.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 mouse_filter = 2
 stretch = true
-script = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -114,11 +117,11 @@ current = true
 script = ExtResource( 11 )
 
 [node name="ViewportContainerForward2" type="ViewportContainer" parent="."]
-margin_left = 640.0
-margin_right = 1285.0
-margin_bottom = 480.0
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 8 )
+stretch = true
 
 [node name="Viewport" type="Viewport" parent="ViewportContainerForward2"]
 size = Vector2( 640, 480 )
@@ -129,6 +132,6 @@ render_target_update_mode = 3
 current = true
 script = ExtResource( 1 )
 
-[connection signal="item_selected" from="CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]
+[connection signal="item_selected" from="UI/CommandPanelContainer/CommandGridContainer/ControllerOptionButton" to="." method="_on_ControllerOptionButton_item_selected"]
 
 [editable path="POOL"]
