@@ -13,23 +13,15 @@ var control_torque := Vector3.ZERO
 
 var wall_normal_y_threshold := 0.4 
 
-# Logically derived matrix based on thruster orientations and positions.
-# Target axes (columns): 0:Right, 1:Up, 2:Backward, 3:Pitch(Zeroed), 4:YawLeft, 5:RollLeft
-#const thruster_mat = [
-#	[ 1.0,  0.0,  0.0,  0.0,  0.0, -20.0], # 0: top (Side-R)
-#	[ 1.0,  0.0,  0.0,  0.0,  0.0,  20.0], # 1: bottom (Side-R)
-#	[ 0.0,  1.0,  0.0,  0.0,  0.0, -20.0], # 2: left_up (Up)
-#	[ 0.0,  1.0,  0.0,  0.0,  0.0,  20.0], # 3: right_up (Up)
-#	[ 0.0,  0.0,  1.0,  0.0, -20.0,  0.0], # 4: left_back (Back)
-#	[ 0.0,  0.0,  1.0,  0.0,  0.0,  0.0], # 5: right_back (Back)
-#]
-
-const thruster_mat = [[ 0.52,  0.0 , -0.0 ,  0.0 ,  1.57,  0.0 ],
-	   [ 0.48, -0.0 ,  0.0 ,  0.0 , -1.57, -0.0 ],
-	   [-0.02, -0.0 ,  0.5 ,  0.0 , -1.57,  0.0 ],
-	   [ 0.02, -0.0 ,  0.5 ,  0.0 ,  1.57, -0.0 ],
-	   [ 0.05,  0.51, -0.0 ,  0.0 , -0.0 ,  3.15],
-	   [-0.05,  0.49, -0.0 ,  0.0 ,  0.0 , -3.15]]
+# Local force (X, Y, Z), then torque (X, Y, Z)
+const thruster_mat = [
+	[0.5, 0.0, 0.0, 0.0, 0.0, -1.572327], # top: +X
+	[0.5, 0.0, 0.0, 0.0, 0.0,  1.572327], # bottom: +X
+	[0.0, 0.5, 0.0, 0.0, 0.0,  1.572327], # left_up: +Y
+	[0.0, 0.5, 0.0, 0.0, 0.0, -1.572327], # right_up: +Y
+	[0.371069, 0.0, 0.5, 0.0, -3.144654, 0.0], # left_back: +Z
+	[-0.371069, 0.0, 0.5, 0.0, 3.144654, 0.0], # right_back: +Z
+]
 onready var thrusters = [
 	$top,
 	$bottom,
@@ -54,14 +46,12 @@ func _physics_process(_delta):
 	add_force(Vector3.DOWN * 98, Vector3.ZERO)
 	
 	var control_vector = [
-		control_translation.x, -control_translation.z, control_translation.y,
-		control_torque.x, -control_torque.z, control_torque.y
+		control_translation.x, control_translation.y, control_translation.z,
+		control_torque.x, control_torque.y, control_torque.z
 	]
 	
-	print(control_vector)
 	var powers = mat_transform(thruster_mat, control_vector)
 	powers = limit_powers(powers)
-	print(powers)
 	
 	for i in range(thrusters.size()):
 		run_thruster(thrusters[i], powers[i])
